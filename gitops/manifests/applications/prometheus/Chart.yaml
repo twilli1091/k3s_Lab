@@ -1,0 +1,15 @@
+apiVersion: v2
+name: prometheus-stack
+description: A Helm chart for Prometheus monitoring on Talos using kube-prometheus-stack
+type: application
+
+# This version is for your internal tracking of this specific config
+version: 1.0.0
+
+# This is the version of the Prometheus stack you want to deploy
+appVersion: "v0.73.2" 
+
+dependencies:
+  - name: kube-prometheus-stack
+    version: 69.0.0 # Check artifacthub.io for the latest 69.x.x version
+    repository: https://prometheus-community.github.io/helm-charts
