@@ -20,5 +20,6 @@ spec:
         - name: argocd-server
           namespace: argocd # Important if the service is in a different NS
           port: 443
+          weight: 1
           group: ""       # Explicitly set empty group for core Service
           kind: Service
