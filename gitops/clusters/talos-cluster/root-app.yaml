@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: root-app
-  namespace: argocd
+
 spec:
   project: default
   sources:
@@ -14,7 +14,7 @@ spec:
     #   path: gitops/manifests/applications/drivers-api-mock
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: argocd
+    namespace: envoy-gateway-system
   syncPolicy:
     automated:
       prune: true
