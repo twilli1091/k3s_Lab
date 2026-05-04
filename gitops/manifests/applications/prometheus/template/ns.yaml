@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: prometheus
+  labels:
+    # This allows node-exporter to use hostNetwork, hostPID, and hostPath
+    pod-security.kubernetes.io/enforce: privileged
