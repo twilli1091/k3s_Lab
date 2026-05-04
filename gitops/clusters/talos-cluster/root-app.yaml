@@ -2,29 +2,17 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: root-app
-
+  namespace: argocd
 spec:
   project: default
-  sources:
-    - repoURL: 'https://github.com/twilli1091/Talos.git'
-      targetRevision: HEAD
-      path: gitops/manifests/infrastructure/envoy-gateway-bootstrap
-    # - repoURL: 'https://github.com/twilli1091/Talos.git'
-    #   targetRevision: HEAD
-    #   path: gitops/manifests/applications/drivers-api-mock
+  source: # Note: singular 'source' here usually
+    repoURL: 'https://github.com/twilli1091/Talos.git'
+    targetRevision: HEAD
+    path: gitops/clusters/talos-cluster/apps # <--- Points to the folder of apps
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: envoy-gateway-system
+    namespace: argocd # The child apps deploy into the argocd namespace
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
-      - ServerSideApply=true       # <--- FIX 1: Use the server, not the client
-      - ClientSideApplyMigration=false # <--- FIX 2: Stop trying to "fix" old annotations
-  ignoreDifferences:
-    - group: gateway.networking.k8s.io
-      kind: HTTPRoute
-      jsonPointers:
-        - /status
