@@ -5,10 +5,13 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    repoURL: 'https://github.com/twilli1091/Talos.git'
-    targetRevision: HEAD
-    path: gitops/manifests/ # This "watches" your infra folder
+  sources:
+    - repoURL: 'https://github.com/twilli1091/Talos.git'
+      targetRevision: HEAD
+      path: gitops/manifests/infrastructure/envoy-gateway-bootstrap
+    # - repoURL: 'https://github.com/twilli1091/Talos.git'
+    #   targetRevision: HEAD
+    #   path: gitops/manifests/applications/drivers-api-mock
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: argocd
@@ -16,3 +19,7 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true       # <--- FIX 1: Use the server, not the client
+      - ClientSideApplyMigration=false # <--- FIX 2: Stop trying to "fix" old annotations

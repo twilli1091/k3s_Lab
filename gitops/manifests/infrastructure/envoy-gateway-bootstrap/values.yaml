@@ -1,7 +1,7 @@
 # Configuration for the Envoy Gateway subchart
 gateway-helm:
   installCRDs: false
-
+  namespace: envoy-gateway-system
 # GatewayClass configuration
 gatewayClass:
   name: envoy-gateway-class
