@@ -1,0 +1,23 @@
+argo-cd:
+  # Portfolio Tip: Disabling Dex if you aren't using SSO saves resources
+  dex:
+    enabled: false
+  server:
+    service:
+      type: LoadBalancer # Good for cloud, or use NodePort for local lab
+  # This is where we put that Health Check fix from earlier
+  configs:
+    cm:
+      resource.customizations.health.gateway.networking.k8s.io_Gateway: |
+        hs = {}
+        if obj.status ~= nil and obj.status.conditions ~= nil then
+          for i, condition in ipairs(obj.status.conditions) do
+            if condition.type == "Programmed" and condition.status == "True" then
+              hs.status = "Healthy"
+              hs.message = "Gateway is Programmed"
+              return hs
+            end
+          end
+        end
+        hs.status = "Progressing"
+        return hs

@@ -1,0 +1,8 @@
+# Secrets and Configs
+Talos-control/kubeconfig
+Talos-control/talosconfig
+Talos-control/*.yaml
+
+# Helm chart archives
+**/*.tgz
+**/charts/

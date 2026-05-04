@@ -1,0 +1,8 @@
+# Configuration for the Envoy Gateway subchart
+gateway-helm:
+  installCRDs: false
+
+# GatewayClass configuration
+gatewayClass:
+  name: envoy-gateway-class
+  controllerName: gateway.envoyproxy.io/gatewayclass-controller
