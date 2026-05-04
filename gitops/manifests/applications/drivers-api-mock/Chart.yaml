@@ -1,0 +1,6 @@
+apiVersion: v2
+name: drivers-api-mock
+description: A mock API for the drivers service
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
