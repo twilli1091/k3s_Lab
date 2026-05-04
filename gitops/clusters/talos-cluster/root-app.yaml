@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/YOUR_USER/k8s-platform-gitops.git'
+    repoURL: 'https://github.com/twilli1091/Talos.git'
     targetRevision: HEAD
     path: manifests/infrastructure # This "watches" your infra folder
   destination:

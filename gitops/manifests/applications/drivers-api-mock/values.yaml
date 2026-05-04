@@ -1,0 +1,4 @@
+replicaCount: 1
+image: ealen/echo-server:latest
+service:
+  port: 80

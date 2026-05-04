@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: drivers-mock
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: drivers-mock
+  template:
+    metadata:
+      labels:
+        app: drivers-mock
+    spec:
+      containers:
+      - name: echo
+        image: ealen/echo-server:latest
+        ports:
+        - containerPort: 80
