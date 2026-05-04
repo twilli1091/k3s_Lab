@@ -4,5 +4,5 @@ Talos-control/talosconfig
 Talos-control/*.yaml
 
 # Helm chart archives
-**/*.tgz
-**/charts/
+
+*temp.yaml
