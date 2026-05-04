@@ -4,12 +4,21 @@ metadata:
   name: argocd-route
   namespace: argocd
 spec:
-  parentRefs:
-  - name: drivers-gateway
-    namespace: drivers
   hostnames:
-  - "argocd.default.svc.cluster.local" 
+    - argocd.default.svc.cluster.local
+  parentRefs:
+    - name: drivers-gateway
+      namespace: drivers
+      group: gateway.networking.k8s.io # Good practice to keep this
+      kind: Gateway
   rules:
-  - backendRefs:
-    - name: argocd-server
-      port: 443
+    - matches: # You MUST have a match rule for the path
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: argocd-server
+          namespace: argocd # Important if the service is in a different NS
+          port: 443
+          group: ""       # Explicitly set empty group for core Service
+          kind: Service

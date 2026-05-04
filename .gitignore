@@ -6,4 +6,3 @@ Talos-control/*.yaml
 # Helm chart archives
 
 *temp.yaml
-\drivers-api-mock*

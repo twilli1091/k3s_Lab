@@ -23,3 +23,8 @@ spec:
       - CreateNamespace=true
       - ServerSideApply=true       # <--- FIX 1: Use the server, not the client
       - ClientSideApplyMigration=false # <--- FIX 2: Stop trying to "fix" old annotations
+  ignoreDifferences:
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      jsonPointers:
+        - /status
