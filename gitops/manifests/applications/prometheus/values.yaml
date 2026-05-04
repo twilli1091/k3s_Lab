@@ -1,7 +1,8 @@
 prometheus:
   service:
     type: NodePort
-    nodePort: 30090
+    nodePortHttp: 30090
+    nodePortHttps: 31443
   prometheusSpec:
     additionalScrapeConfigs:
       - job_name: 'idrac'
