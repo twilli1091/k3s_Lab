@@ -1,0 +1,5 @@
+apiVersion: v2
+name: metallb-config
+description: Layer 2 IP Address Pool for Home Lab
+type: application
+version: 0.1.0

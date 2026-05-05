@@ -1,0 +1,4 @@
+# Update these to match your home network!
+# Ensure these IPs are NOT in your router's DHCP pool.
+ipRange: "10.0.0.200-10.0.0.245"
+poolName: home-lab-pool
