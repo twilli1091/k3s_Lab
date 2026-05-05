@@ -15,9 +15,9 @@ spec:
       path: /metrics
       interval: 15s
       relabelings:
-        - sourceLabels: [__address__]
-          targetLabel: __param_target
-        - sourceLabels: [__param_target]
+        - action: replace
+          sourceLabels:
+            - __address__
           targetLabel: instance
         - targetLabel: __address__
           replacement: 10.0.0.5:9348 # Your Unraid Exporter
