@@ -19,9 +19,9 @@ spec:
           sourceLabels:
             - __address__
           targetLabel: instance
-        - action: replace
-        - targetLabel: __address__
-          replacement: 10.0.0.5:9348 # Your Unraid Exporter
+        - action: replace      
+          targetLabel: __address__
+          replacement: 10.0.0.5:9348
 ---
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
