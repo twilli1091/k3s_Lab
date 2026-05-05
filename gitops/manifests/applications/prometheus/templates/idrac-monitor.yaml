@@ -41,9 +41,10 @@ spec:
         module: [dell_power]
         auth: [public_v2]
       relabelings:
-        - sourceLabels: [__address__]
+        - action: replace
+          sourceLabels: [__address__]
           targetLabel: __param_target
-        - sourceLabels: [__param_target]
-          targetLabel: instance
-        - targetLabel: __address__
+        - action: replace
+          sourceLabels: [__address__]
+          targetLabel: __param_target
           replacement: 10.0.0.5:9116 # Your Unraid SNMP Exporter
