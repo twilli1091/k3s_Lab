@@ -1,4 +1,3 @@
----
 apiVersion: v1
 kind: Service
 metadata:
@@ -7,20 +6,20 @@ metadata:
   labels:
     app: idrac-metrics
 spec:
-  clusterIP: None
+  clusterIP: None  
   ports:
     - name: metrics
       port: 443
+      targetPort: 443
 ---
 apiVersion: v1
 kind: Endpoints
 metadata:
   name: idrac-external-service
   namespace: prometheus
-spec:
-  subsets:
-    - addresses:
-        - ip: 10.0.0.129
-      ports:
-        - name: metrics
-          port: 443
+subsets: 
+  - addresses:
+      - ip: 10.0.0.129
+    ports:
+      - name: metrics
+        port: 443
