@@ -8,7 +8,7 @@ spec:
     - argocd.10-0-0-200.nip.io
   parentRefs:
     - name: drivers-gateway
-      namespace: envoy-gateway-system
+      namespace: infrastructure
       group: gateway.networking.k8s.io # Good practice to keep this
       kind: Gateway
   rules:
