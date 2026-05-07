@@ -10,6 +10,6 @@ gatewayClass:
   name: envoy-gateway-class
   controllerName: gateway.envoyproxy.io/gatewayclass-controller
 
-Deployment:
+deployment:
   metadata:
     namespace: infrastructure 
