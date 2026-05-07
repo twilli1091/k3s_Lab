@@ -4,7 +4,7 @@ metadata:
   name: shared-gateway
   namespace: infrastructure
 spec:
-  gatewayClassName: envoy-gateway-class
+  gatewayClassName: {{ .Values.gatewayClass.name }}
   listeners:
     - name: http
       port: 80
