@@ -4,6 +4,11 @@ metadata:
   name: root-app
   namespace: argocd
 spec:
+  ignoreDifferences:
+    - group: apps
+      kind: StatefulSet
+      jsonPointers:
+      - /status/terminatingReplicas
   project: default
   source: # Note: singular 'source' here usually
     repoURL: 'https://github.com/twilli1091/Talos.git'
