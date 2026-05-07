@@ -9,3 +9,7 @@ gateway-helm:
 gatewayClass:
   name: envoy-gateway-class
   controllerName: gateway.envoyproxy.io/gatewayclass-controller
+
+Deployment:
+  metadata:
+    namespace: infrastructure 
