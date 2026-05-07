@@ -1,8 +1,8 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
-  name: drivers-gateway
-  namespace: envoy-gateway-system
+  name: shared-gateway
+  namespace: infrastructure
 spec:
   gatewayClassName: envoy-gateway-class
   listeners:
