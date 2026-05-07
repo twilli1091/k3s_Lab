@@ -18,6 +18,7 @@ spec:
             value: /
       backendRefs:
         - name: prometheus-kube-prometheus-prometheus
+          namespace: prometheus 
           port: 9090
           weight: 1
           group: ""
