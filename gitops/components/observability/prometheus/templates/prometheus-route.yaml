@@ -5,8 +5,8 @@ metadata:
   namespace: prometheus
 spec:
   parentRefs:
-    - name: drivers-gateway
-      namespace: drivers
+    - name: shared-gateway
+      namespace: infrastructure
       group: gateway.networking.k8s.io
       kind: Gateway
   rules:
