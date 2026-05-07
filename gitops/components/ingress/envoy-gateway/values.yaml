@@ -2,10 +2,9 @@
 gateway-helm:
   installCRDs: true
   envoyGateway:
-    namespace: infrastructure
     service:
       type: NodePort
-  namespace: envoy-gateway-system
+  namespace: infrastructure
 # GatewayClass configuration
 gatewayClass:
   name: envoy-gateway-class
