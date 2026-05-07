@@ -1,9 +1,10 @@
 # Configuration for the Envoy Gateway subchart
 gateway-helm:
-  installCRDs: false
+  installCRDs: true
+  envoyGateway:
+    service:
+      type: NodePort
   namespace: envoy-gateway-system
-  envoyService:
-    type: NodePort
 # GatewayClass configuration
 gatewayClass:
   name: envoy-gateway-class

@@ -5,10 +5,10 @@ metadata:
   namespace: argocd
 spec:
   hostnames:
-    - argocd.default.svc.cluster.local
+    - argocd.10-0-0-200.nip.io
   parentRefs:
     - name: drivers-gateway
-      namespace: drivers
+      namespace: envoy-gateway-system
       group: gateway.networking.k8s.io # Good practice to keep this
       kind: Gateway
   rules:
@@ -17,9 +17,9 @@ spec:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: argocd-server
+        - name: argocd-bootstrap-server
           namespace: argocd # Important if the service is in a different NS
-          port: 443
+          port: 80
           weight: 1
           group: ""       # Explicitly set empty group for core Service
           kind: Service
