@@ -1,16 +1,18 @@
 gateway-helm:
   installCRDs: true
-  # Configure the Envoy Gateway Controller
+  
+  # This config map tells the Envoy Controller how to behave
   config:
     envoyGateway:
       provider:
         type: Kubernetes
         kubernetes:
           deploy:
-            # This forces the Proxy Pods/SVCs to be created in the 
-            # namespace where your Gateway resource lives.
+            # This is the magic switch. It tells Envoy to put the Proxy 
+            # Pods/SVCs in the namespace where the Gateway is declared.
             type: GatewayNamespace
 
+# Keep your gatewayClass config as it is
 gatewayClass:
   name: envoy-gateway-class
   controllerName: gateway.envoyproxy.io/gatewayclass-controller
