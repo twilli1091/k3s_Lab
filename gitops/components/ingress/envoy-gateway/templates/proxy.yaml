@@ -7,6 +7,5 @@ spec:
   provider:
     type: Kubernetes
     kubernetes:
-      # This configures the actual Data Plane Service
       envoyService:
-        type: NodePort
+        type: LoadBalancer
