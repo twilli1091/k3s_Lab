@@ -7,7 +7,7 @@ spec:
   hostnames:
     - argocd.10-0-0-200.nip.io
   parentRefs:
-    - name: drivers-gateway
+    - name: shared-gateway
       namespace: infrastructure
       group: gateway.networking.k8s.io # Good practice to keep this
       kind: Gateway
@@ -19,7 +19,7 @@ spec:
       backendRefs:
         - name: argocd-bootstrap-server
           namespace: argocd # Important if the service is in a different NS
-          port: 8888
+          port: 80
           weight: 1
           group: ""       # Explicitly set empty group for core Service
           kind: Service
