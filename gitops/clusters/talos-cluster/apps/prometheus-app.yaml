@@ -8,8 +8,7 @@ spec:
   source:
     repoURL: 'https://github.com/twilli1091/Talos.git'
     targetRevision: HEAD
-    path: gitops/manifests/applications/prometheus # Points to your chart
-  destination:
+    path: gitops/components/monitoring/prometheus 
     server: 'https://kubernetes.default.svc'
     namespace: prometheus
   syncPolicy:

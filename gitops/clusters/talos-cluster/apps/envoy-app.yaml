@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: 'https://github.com/twilli1091/Talos.git'
     targetRevision: HEAD
-    path: gitops/manifests/infrastructure/envoy-gateway-bootstrap # Points to your chart
+    path: gitops/components/ingress/envoy-gateway
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: envoy-gateway-system # Where it actually deploys

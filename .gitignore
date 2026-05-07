@@ -6,3 +6,4 @@ Talos-control/*.yaml
 # Helm chart archives
 
 *temp.yaml
+.env
