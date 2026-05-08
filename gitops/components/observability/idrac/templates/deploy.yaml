@@ -23,4 +23,4 @@ spec:
       volumes:
         - name: config-volume
           configMap:
-            name: {{ include "idrac-exporter.fullname" . }}
+            name: idrac-exporter
