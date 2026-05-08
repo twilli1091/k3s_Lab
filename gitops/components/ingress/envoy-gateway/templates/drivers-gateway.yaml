@@ -6,15 +6,9 @@ metadata:
 spec:
   gatewayClassName: {{ .Values.gatewayClass.name }}
   listeners:
-    - name: argo
-      port: 80
-      protocol: HTTP
-      allowedRoutes:
-        namespaces:
-          from: All
-    - name: prom
-      port: 81
-      protocol: HTTP
-      allowedRoutes:
-        namespaces:
-          from: All
+      - name: http-shared
+        port: 80
+        protocol: HTTP
+        allowedRoutes:
+          namespaces:
+            from: All
