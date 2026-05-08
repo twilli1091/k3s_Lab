@@ -17,5 +17,7 @@ spec:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: longhorn-frontend
+        - group: ''	
+          kind: Service
+          name: longhorn-frontend
           port: 80
