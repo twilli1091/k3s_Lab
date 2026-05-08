@@ -5,7 +5,7 @@ metadata:
   namespace: prometheus
 spec:
   hostnames:
-    - home.10-0-0-200.nip.io/prom
+    - prom.10-0-0-200.nip.io/p
   parentRefs:
     - name: shared-gateway
       namespace: infrastructure
