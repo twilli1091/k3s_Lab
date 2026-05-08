@@ -82,7 +82,14 @@ configmapReload:
 
     ## Additional configmap-reload mounts
     ##
-    extraConfigmapMounts: []
+    extraConfigmapMounts: 
+
+      - name: idrac-configs
+        mountPath: /etc/prometheus/custom-scrapes
+        subPath: ""
+        configMap: idrac-scrape-configs
+        readOnly: true
+    
       # - name: prometheus-alerts
       #   mountPath: /etc/alerts.d
       #   subPath: ""
@@ -811,40 +818,6 @@ server:
 ## Further scrapeConfigs can be added as new keys, these are then enabled by default.
 ## ref. https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config
 scrapeConfigs:
-  idrac:
-    enabled: true
-    job_name: 'idrac'
-    metrics_path: '/metrics'
-    static_configs:
-      - targets: ['10.0.0.129']
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: __param_target
-      - source_labels: [__param_target]
-        target_label: instance
-      - target_label: __address__
-        replacement: '10.0.0.5:9348'
-  idrac-snmp:
-    enabled: true
-    job_name: 'idrac_snmp'
-    scrape_interval: 1m        # Override the global interval for just this job (from your example)
-    metrics_path: '/snmp'      
-    params:
-      module: [dell_power]
-      auth: [public_v2]
-    static_configs:
-      - targets: ['10.0.0.129']
-        labels:                # Add custom labels here (from your example)
-          group: 'production'
-          device: 'idrac'
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: __param_target
-      - source_labels: [__param_target]
-        target_label: instance
-      - target_label: __address__
-        replacement: '10.0.0.5:9116'
-
   prometheus:
     enabled: true
     job_name: ""
@@ -1129,7 +1102,9 @@ ruleFiles: {}
 ## Prometheus server ConfigMap entries for scrape_config_files
 ## (allows scrape configs defined in additional files)
 ##
-scrapeConfigFiles: []
+scrapeConfigFiles: 
+
+  - /etc/prometheus/custom-scrapes/*.yml
 
 ## Prometheus server ConfigMap entries
 ##
