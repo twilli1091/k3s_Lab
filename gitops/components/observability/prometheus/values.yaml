@@ -1154,7 +1154,36 @@ serverFiles:
       ## Below two files are DEPRECATED will be removed from this default values file
       - /etc/config/rules
       - /etc/config/alerts
+    scrape_configs:
+          # Keep all your existing kubernetes- jobs here...
+          
+          # Add the iDRAC jobs at the bottom of this same block:
+          - job_name: 'idrac'
+            metrics_path: '/metrics'
+            static_configs:
+              - targets: ['10.0.0.129']
+            relabel_configs:
+              - source_labels: [__address__]
+                target_label: __param_target
+              - source_labels: [__param_target]
+                target_label: instance
+              - target_label: __address__
+                replacement: '10.0.0.5:9348'
 
+          - job_name: 'idrac_snmp'
+            metrics_path: /snmp
+            params:
+              module: [dell_power]
+              auth: [public_v2]
+            static_configs:
+              - targets: ['10.0.0.129']
+            relabel_configs:
+              - source_labels: [__address__]
+                target_label: __param_target
+              - source_labels: [__param_target]
+                target_label: instance
+              - target_label: __address__
+                replacement: '10.0.0.5:9116'
 # Adds option to add alert_relabel_configs to avoid duplicate alerts in alertmanager
 # useful in H/A prometheus with different external labels but the same alerts
 alertRelabelConfigs: {}
