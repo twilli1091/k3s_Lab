@@ -9,3 +9,5 @@ longhorn:
   csi:
     # Important for Talos: Ensures the CSI plugin uses the correct paths
     kubeletRootDir: "/var/lib/kubelet"
+  preUpgradeChecker:
+    jobEnabled: false
