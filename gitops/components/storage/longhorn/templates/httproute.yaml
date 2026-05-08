@@ -11,7 +11,7 @@ spec:
       namespace: infrastructure
       group: gateway.networking.k8s.io # Good practice to keep this
       kind: Gateway
-rules:
+  rules:
     - matches:
         - path:
             type: PathPrefix
