@@ -17,8 +17,8 @@ spec:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: prometheus-grafana
-          namespace: prometheus-grafana 
+        - name: prometheus
+          namespace: prometheus
           port: 80
           weight: 1
           group: ""
