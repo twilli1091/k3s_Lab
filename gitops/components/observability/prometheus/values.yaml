@@ -840,7 +840,6 @@ scrapeConfigs:
         target_label: instance
       - target_label: __address__
         replacement: '10.0.0.5:9116'
-        replacement: '10.0.0.5:9116'
 
   prometheus:
     enabled: true
