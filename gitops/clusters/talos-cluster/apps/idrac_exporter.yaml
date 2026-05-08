@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: 'https://github.com/twilli1091/Talos.git'
     targetRevision: HEAD
-    path: gitops/components/observability/idrac_exporter
+    path: gitops/components/observability/idrac
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: prometheus
