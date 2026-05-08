@@ -14,7 +14,7 @@ spec:
           from: All
     - name: http
       port: 90
-      protocol: HTTP
+      # protocol: HTTP
       allowedRoutes:
         namespaces:
           from: All
