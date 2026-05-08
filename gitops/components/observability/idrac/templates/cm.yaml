@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: idrac-exporter-config
+  name: idrac-exporter
   namespace: prometheus 
 data:
   idrac.yml: |
