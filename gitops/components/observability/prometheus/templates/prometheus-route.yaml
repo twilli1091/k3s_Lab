@@ -5,7 +5,7 @@ metadata:
   namespace: prometheus
 spec:
   hostnames:
-    - prom.10-0-0-200.nip.io
+    - home.10-0-0-200.nip.io
   parentRefs:
     - name: shared-gateway
       namespace: infrastructure
@@ -15,11 +15,11 @@ spec:
     - matches:
         - path:
             type: PathPrefix
-            value: /
+            value: /prom
       backendRefs:
         - name: prometheus-kube-prometheus-prometheus
           namespace: prometheus 
-          port: 90
+          port: 80
           weight: 1
           group: ""
           kind: Service
