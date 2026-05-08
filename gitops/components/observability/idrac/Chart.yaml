@@ -1,5 +1,5 @@
 apiVersion: v2
-name: idrac_exporter
+name: idrac-exporter
 description: A Helm chart for idrac_exporter
 type: application
 
