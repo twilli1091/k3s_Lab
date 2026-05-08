@@ -21,7 +21,9 @@ serviceAccounts:
     # automountServiceAccountToken: false
 
 ## Additional labels to attach to all resources
-commonMetaLabels: {}
+commonMetaLabels: {
+    app.kubernetes.io/part-of: argocd
+}
 
 ## Monitors ConfigMap changes and POSTs to a URL
 ## Ref: https://github.com/prometheus-operator/prometheus-operator/tree/main/cmd/prometheus-config-reloader
@@ -1290,8 +1292,6 @@ prometheus-pushgateway:
   # Optional service annotations
   serviceAnnotations:
     prometheus.io/probe: pushgateway
-
-
 
 # prometheus:
 #   service:
