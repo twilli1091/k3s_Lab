@@ -5,7 +5,7 @@ metadata:
   namespace: argocd
 spec:
   hostnames:
-    - argo.10-0-0-200.nip.io
+    - argocd.10-0-0-200.nip.io
   parentRefs:
     - name: shared-gateway
       namespace: infrastructure
