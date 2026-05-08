@@ -1152,13 +1152,13 @@ serverFiles:
   ## DEPRECATED DEFAULT VALUE, unless explicitly naming your files, please use recording_rules.yml
   rules: {}
 
-  prometheus.yml:
-    rule_files:
-      - /etc/config/recording_rules.yml
-      - /etc/config/alerting_rules.yml
-      ## Below two files are DEPRECATED will be removed from this default values file
-      - /etc/config/rules
-      - /etc/config/alerts
+  # prometheus.yml:
+  #   rule_files:
+  #     - /etc/config/recording_rules.yml
+  #     - /etc/config/alerting_rules.yml
+  #     ## Below two files are DEPRECATED will be removed from this default values file
+  #     - /etc/config/rules
+  #     - /etc/config/alerts
     scrape_configs:
           # Keep all your existing kubernetes- jobs here...
           
