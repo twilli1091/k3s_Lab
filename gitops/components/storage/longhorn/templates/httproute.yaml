@@ -12,6 +12,8 @@ spec:
       group: gateway.networking.k8s.io # Good practice to keep this
       kind: Gateway
   rules:
+    - timeouts:
+        request: 60s
     - matches:
         - path:
             type: PathPrefix
