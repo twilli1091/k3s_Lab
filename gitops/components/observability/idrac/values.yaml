@@ -1,0 +1,20 @@
+# MetalLB Integration
+poolName: home-lab-pool
+ipRange: "10.0.0.200-10.0.0.245"
+
+# iDRAC Exporter Configuration
+config: |
+  auths:
+    default:
+      username: "${IDRAC_USER}"
+      password: "${IDRAC_PASS}"
+  targets:
+    10.0.0.129:  # Replace with your actual iDRAC IP
+      auth: default
+
+image:
+  repository: ghcr.io/mrlhansen/idrac_exporter
+  tag: latest
+
+service:
+  type: LoadBalancer

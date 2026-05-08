@@ -1,0 +1,9 @@
+config: |
+  auths:
+    default:
+      # These placeholders will be replaced by the container at runtime
+      username: "${IDRAC_USER}"
+      password: "${IDRAC_PASS}"
+  targets:
+    10.0.0.129:
+      auth: default
