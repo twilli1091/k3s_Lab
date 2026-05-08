@@ -1096,7 +1096,7 @@ extraScrapeConfigs: |
       - source_labels: [__param_target]
         target_label: instance
       - target_label: __address__
-        replacement: '10.0.0.5:9348' # Ensure this IP is reachable from the Talos nodes
+        replacement: '10.0.0.5:9348'
 
   - job_name: 'idrac_snmp'
     metrics_path: /snmp
@@ -1112,7 +1112,6 @@ extraScrapeConfigs: |
         target_label: instance
       - target_label: __address__
         replacement: '10.0.0.5:9116'
-
 ## Prometheus server ConfigMap entries for rule files (allow prometheus labels interpolation)
 ruleFiles: {}
 
