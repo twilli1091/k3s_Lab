@@ -814,7 +814,7 @@ scrapeConfigs:
   idrac:
     enabled: true
     job_name: 'idrac'
-    metrics_path: '/metrics'   # Make sure this path is correct for your exporter
+    metrics_path: '/metrics'
     static_configs:
       - targets: ['10.0.0.129']
     relabel_configs:
@@ -827,12 +827,16 @@ scrapeConfigs:
   idrac-snmp:
     enabled: true
     job_name: 'idrac_snmp'
-    metrics_path: '/snmp'      # Make sure this path is correct for your exporter
+    scrape_interval: 1m        # Override the global interval for just this job (from your example)
+    metrics_path: '/snmp'      
     params:
       module: [dell_power]
       auth: [public_v2]
     static_configs:
       - targets: ['10.0.0.129']
+        labels:                # Add custom labels here (from your example)
+          group: 'production'
+          device: 'idrac'
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
