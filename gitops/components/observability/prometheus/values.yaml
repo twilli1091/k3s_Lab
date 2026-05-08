@@ -1159,7 +1159,7 @@ serverFiles:
   #     ## Below two files are DEPRECATED will be removed from this default values file
   #     - /etc/config/rules
   #     - /etc/config/alerts
-    scrape_configs:
+  #   scrape_configs:
           # Keep all your existing kubernetes- jobs here...
           
           # Add the iDRAC jobs at the bottom of this same block:
