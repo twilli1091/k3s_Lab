@@ -4,7 +4,7 @@ longhorn:
     # Additional optimizations for Talos/home labs:
     taintToleration: "node-role.kubernetes.io/control-plane:NoSchedule" 
   persistence:
-    defaultClassReplicaCount: 3
+    defaultClassReplicaCount: 1
     defaultClass: true
   csi:
     # Important for Talos: Ensures the CSI plugin uses the correct paths
