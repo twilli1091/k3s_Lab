@@ -21,7 +21,7 @@ spec:
           targetLabel: instance
         - action: replace      
           targetLabel: __address__
-          replacement: 10.0.0.5:9348
+          replacement: 10.0.0.201:9348
 ---
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
@@ -48,4 +48,4 @@ spec:
         - action: replace
           sourceLabels: [__address__]
           targetLabel: __param_target
-          replacement: 10.0.0.5:9116 # Your Unraid SNMP Exporter
+          replacement: 10.0.0.201:9110 # Your Unraid SNMP Exporter
