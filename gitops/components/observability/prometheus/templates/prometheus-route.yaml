@@ -17,9 +17,9 @@ spec:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: prometheus-kube-prometheus-prometheus
-          namespace: prometheus 
-          port: 9090
+        - name: prometheus-grafana
+          namespace: prometheus-grafana 
+          port: 80
           weight: 1
           group: ""
           kind: Service
