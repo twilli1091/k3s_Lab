@@ -9,7 +9,7 @@ metadata:
     metallb.universe.tf/address-pool: "home-lab-pool"
 spec:
   type: LoadBalancer
-  clusterIP: None  
+  # clusterIP: None  
   ports:
     - name: metrics
       port: 443
