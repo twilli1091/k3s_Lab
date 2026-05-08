@@ -1088,7 +1088,7 @@ scrapeConfigs:
 extraScrapeConfigs: |
 
   - job_name: 'idrac'
-    metrics_path: '/metrics'
+    metrics_path: '/idrac_metrics'
     static_configs:
       - targets: ['10.0.0.129']
     relabel_configs:
@@ -1100,7 +1100,7 @@ extraScrapeConfigs: |
         replacement: '10.0.0.5:9348'
 
   - job_name: 'idrac_snmp'
-    metrics_path: /snmp
+    metrics_path: /idrac_snmp
     params:
       module: [dell_power]
       auth: [public_v2]
