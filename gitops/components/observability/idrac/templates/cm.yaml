@@ -1,9 +1,14 @@
-config: |
-  auths:
-    default:
-      # These placeholders will be replaced by the container at runtime
-      username: "${IDRAC_USER}"
-      password: "${IDRAC_PASS}"
-  targets:
-    10.0.0.129:
-      auth: default
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: idrac-exporter-config
+  namespace: prometheus 
+data:
+  idrac.yml: |
+    auths:
+      default:
+        username: "${IDRAC_USER}"
+        password: "${IDRAC_PASS}"
+    targets:
+      10.0.0.129:
+        auth: default
