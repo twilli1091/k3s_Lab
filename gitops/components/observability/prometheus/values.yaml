@@ -811,6 +811,35 @@ server:
 ## Further scrapeConfigs can be added as new keys, these are then enabled by default.
 ## ref. https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config
 scrapeConfigs:
+  idrac:
+    job_name: 'idrac'
+    metrics_path: '/metrics'   # Make sure this path is correct for your exporter
+    static_configs:
+      - targets: ['10.0.0.129']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: '10.0.0.5:9348'
+
+  idrac-snmp:
+    job_name: 'idrac_snmp'
+    metrics_path: '/snmp'      # Make sure this path is correct for your exporter
+    params:
+      module: [dell_power]
+      auth: [public_v2]
+    static_configs:
+      - targets: ['10.0.0.129']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: '10.0.0.5:9116'
+
   prometheus:
     enabled: true
     job_name: ""
@@ -1087,34 +1116,7 @@ scrapeConfigs:
 # extraScrapeConfigs adds additional scrape configs to prometheus.yml
 # must be a string so you have to add a | after extraScrapeConfigs:
 # example adds prometheus-blackbox-exporter scrape config
-extraScrapeConfigs: |
-
-  - job_name: 'idrac'
-    metrics_path: '/idrac_metrics'
-    static_configs:
-      - targets: ['10.0.0.129']
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: __param_target
-      - source_labels: [__param_target]
-        target_label: instance
-      - target_label: __address__
-        replacement: '10.0.0.5:9348'
-
-  - job_name: 'idrac_snmp'
-    metrics_path: /idrac_snmp
-    params:
-      module: [dell_power]
-      auth: [public_v2]
-    static_configs:
-      - targets: ['10.0.0.129']
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: __param_target
-      - source_labels: [__param_target]
-        target_label: instance
-      - target_label: __address__
-        replacement: '10.0.0.5:9116'
+extraScrapeConfigs: 
   
 ## Prometheus server ConfigMap entries for rule files (allow prometheus labels interpolation)
 ruleFiles: {}
