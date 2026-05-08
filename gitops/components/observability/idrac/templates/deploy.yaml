@@ -1,0 +1,26 @@
+spec:
+  template:
+    spec:
+      containers:
+        - name: idrac-exporter
+          image: "ghcr.io/mrlhansen/idrac_exporter:latest"
+          # This is the magic part
+          env:
+            - name: IDRAC_USER
+              valueFrom:
+                secretKeyRef:
+                  name: idrac-credentials
+                  key: username
+            - name: IDRAC_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: idrac-credentials
+                  key: password
+          volumeMounts:
+            - name: config-volume
+              mountPath: /etc/prometheus
+              readOnly: true
+      volumes:
+        - name: config-volume
+          configMap:
+            name: {{ include "idrac-exporter.fullname" . }}
