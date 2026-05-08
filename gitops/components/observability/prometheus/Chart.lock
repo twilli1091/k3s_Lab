@@ -5,5 +5,14 @@ dependencies:
 - name: alertmanager
   repository: https://prometheus-community.github.io/helm-charts
   version: 1.36.0
-digest: sha256:a6f95b11dd9a1f7c953eefb85fe4751d41c74f96708d9b5f04991fbece963ea6
-generated: "2026-05-08T12:58:03.52204-04:00"
+- name: kube-state-metrics
+  repository: https://prometheus-community.github.io/helm-charts
+  version: 7.3.0
+- name: prometheus-node-exporter
+  repository: https://prometheus-community.github.io/helm-charts
+  version: 4.55.0
+- name: prometheus-pushgateway
+  repository: https://prometheus-community.github.io/helm-charts
+  version: 3.6.0
+digest: sha256:1b96b05b5fea1048546abb82f04b5c7138a95016dc7a703e567e4997f47ac76b
+generated: "2026-05-08T13:04:31.85206-04:00"
