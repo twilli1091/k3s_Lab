@@ -13,7 +13,7 @@ spec:
         namespaces:
           from: All
     - name: prom
-      port: 9090
+      port: 80
       protocol: HTTP
       allowedRoutes:
         namespaces:
