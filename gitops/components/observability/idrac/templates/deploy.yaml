@@ -1,10 +1,22 @@
-spec:
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: idrac-exporter
+  labels:
+    app: idrac-exporter
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      app: idrac-exporter
   template:
+    metadata:
+      labels:
+        app: idrac-exporter
     spec:
       containers:
         - name: idrac-exporter
-          image: "ghcr.io/mrlhansen/idrac_exporter:latest"
-          # This is the magic part
+          image: ghcr.io/mrlhansen/idrac_exporter:latest
           env:
             - name: IDRAC_USER
               valueFrom:
@@ -23,4 +35,4 @@ spec:
       volumes:
         - name: config-volume
           configMap:
-            name: idrac-exporter
+            name: idrac-exporter 
