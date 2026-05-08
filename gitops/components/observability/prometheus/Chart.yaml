@@ -7,9 +7,8 @@ type: application
 version: 1.0.0
 
 # This is the version of the Prometheus stack you want to deploy
-appVersion: "v0.73.2" 
-
+appVersion: "29.6.0"
 dependencies:
-  - name: kube-prometheus-stack
-    version: 69.0.0 # Check artifacthub.io for the latest 69.x.x version
+  - name: prometheus
+    version: 29.6.0
     repository: https://prometheus-community.github.io/helm-charts
