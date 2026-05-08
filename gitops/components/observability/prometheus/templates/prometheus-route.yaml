@@ -15,7 +15,7 @@ spec:
     - matches:
         - path:
             type: PathPrefix
-            value: /prom
+            value: /
       backendRefs:
         - name: prometheus-kube-prometheus-prometheus
           namespace: prometheus 
