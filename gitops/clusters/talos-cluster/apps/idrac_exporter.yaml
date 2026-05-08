@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: idrac_exporter
+  name: idrac-exporter
   namespace: argocd # Child apps must live in the argocd namespace
 spec:
   project: default
