@@ -2,12 +2,12 @@ argo-cd:
   dex:
     enabled: false
   server:
-      extraArgs:
-        - --insecure
-      service:
-        type: NodePort
-        nodePortHttp: 30080
-        nodePortHttps: 30443
+    extraArgs:
+      - --insecure
+    service:
+      type: NodePort
+      nodePortHttp: 30080
+      nodePortHttps: 30443
   configs:
     cm:
       resource.exclusions: |
@@ -66,3 +66,31 @@ argo-cd:
         end
         hs.status = "Progressing"
         return hs
+  repoServer:
+    podSecurityContext:
+      fsGroup: 999
+      
+    env:
+      - name: ARGOCD_ASK_PASS_SOCK
+        value: "/dev/shm/ssh-ask-pass.sock"
+
+    resources:
+      requests:
+        cpu: 500m
+        memory: 512Mi
+      limits:
+        cpu: 1000m
+        memory: 1Gi
+
+    # The Final Probe Adjustments
+    livenessProbe:
+      initialDelaySeconds: 60
+      periodSeconds: 30
+      timeoutSeconds: 30
+      failureThreshold: 3
+      
+    readinessProbe:
+      initialDelaySeconds: 60
+      periodSeconds: 30
+      timeoutSeconds: 30
+      failureThreshold: 3

@@ -28,3 +28,4 @@ ports:
 endpoints:
   - addresses:
       - "10.0.0.129"
+    conditions: {}
