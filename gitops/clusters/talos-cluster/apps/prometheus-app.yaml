@@ -4,6 +4,14 @@ metadata:
   name: prometheus
   namespace: argocd 
 spec:
+  ignoreDifferences:
+  - group: apps
+    kind: StatefulSet
+    name: prometheus-alertmanager
+    namespace: prometheus
+    jsonPointers:
+    - /spec/volumeClaimTemplates/0/apiVersion
+    - /spec/volumeClaimTemplates/0/kind
   project: default
   source:
     repoURL: 'https://github.com/twilli1091/Talos.git'
