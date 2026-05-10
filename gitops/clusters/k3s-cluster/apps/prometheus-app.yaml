@@ -14,7 +14,7 @@ spec:
     - /spec/volumeClaimTemplates/0/kind
   project: default
   source:
-    repoURL: 'https://github.com/twilli1091/Talos.git'
+    repoURL: 'https://github.com/twilli1091/k3s_lab.git'
     targetRevision: HEAD
     path: gitops/components/observability/prometheus 
   destination:
