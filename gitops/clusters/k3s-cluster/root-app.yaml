@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-app
+  namespace: argocd
+spec:
+  ignoreDifferences:
+    - group: apps
+      kind: StatefulSet
+      jsonPointers:
+      - /status/terminatingReplicas
+  project: default
+  source: # Note: singular 'source' here usually
+    repoURL: 'https://github.com/twilli1091/K3S_Lab.git'
+    targetRevision: HEAD
+    path: gitops/clusters/k3s-cluster/apps # <--- Points to the folder of apps
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: argocd # The child apps deploy into the argocd namespace
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
