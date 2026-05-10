@@ -1,7 +1,7 @@
 apiVersion: v2
 name: longhorn-deployment
 version: 1.0.0
-description: "A wrapper chart for Longhorn on Talos"
+description: "A wrapper chart for Longhorn on k3s_lab"
 dependencies:
   - name: longhorn
     version: 1.7.2  # Pin the version here

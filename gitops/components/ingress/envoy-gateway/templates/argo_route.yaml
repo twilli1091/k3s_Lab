@@ -17,7 +17,7 @@ spec:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: argocd-bootstrap-server
+        - name: argocd-server
           namespace: argocd # Important if the service is in a different NS
           port: 80
           weight: 1

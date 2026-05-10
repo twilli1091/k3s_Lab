@@ -1,6 +1,6 @@
 apiVersion: v2
 name: prometheus-stack
-description: A Helm chart for Prometheus monitoring on Talos using kube-prometheus-stack
+description: A Helm chart for Prometheus monitoring on k3s_lab using kube-prometheus-stack
 type: application
 
 # This version is for your internal tracking of this specific config

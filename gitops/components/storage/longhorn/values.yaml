@@ -1,13 +1,13 @@
 longhorn:
   defaultSettings:
     defaultDataPath: "/var/lib/longhorn"
-    # Additional optimizations for Talos/home labs:
+    # Additional optimizations for k3s_lab/home labs:
     taintToleration: "node-role.kubernetes.io/control-plane:NoSchedule" 
   persistence:
     defaultClassReplicaCount: 1
     defaultClass: true
   csi:
-    # Important for Talos: Ensures the CSI plugin uses the correct paths
+    # Important for k3s_lab: Ensures the CSI plugin uses the correct paths
     kubeletRootDir: "/var/lib/kubelet"
   preUpgradeChecker:
     jobEnabled: false
