@@ -1,9 +1,10 @@
 # Secrets and Configs
-Talos-control/kubeconfig
-Talos-control/talosconfig
-Talos-control/*.yaml
+k3s_lab-control/kubeconfig
+k3s_lab-control/k3s_labconfig
+k3s_lab-control/*.yaml
 
 # Helm chart archives
 
 *temp.yaml
 .env
+*.pem
