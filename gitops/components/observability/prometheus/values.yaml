@@ -1,7 +1,6 @@
-prometheus-operator:
+prometheus:
   crds:
     enabled: true
-prometheus:
   server:
     service:
       type: NodePort
