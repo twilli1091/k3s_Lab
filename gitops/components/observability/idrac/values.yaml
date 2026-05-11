@@ -3,24 +3,34 @@
 idracConfig: |
   hosts:
     default:
-      username: USERNAME
-      password: PASSWORD
+      username: IDRAC_USER
+      password: IDRAC_PASS
   metrics:
       all: true
-# env:
-# - name: IDRAC_USER
-#   valueFrom:
-#     secretKeyRef:
-#       name: idrac-credentials
-#       key: username
-# - name: IDRAC_PASS
-#   valueFrom:
-#     secretKeyRef:
-#       name: idrac-credentials
-#       key: password
+
+env:
+- name: IDRAC_USER
+  valueFrom:
+    secretKeyRef:
+      name: idrac-credentials
+      key: username
+- name: IDRAC_PASS
+  valueFrom:
+    secretKeyRef:
+      name: idrac-credentials
+      key: password
 image:
   repository: ghcr.io/mrlhansen/idrac_exporter
   pullPolicy: IfNotPresent
 
-service:
+service:  
+  ports:
+  - port: 9110
+    targetPort: 9348
+    protocol: TCP
+    name: http
   type: LoadBalancer
+
+serviceAccount:
+  create: true
+  automount: true
