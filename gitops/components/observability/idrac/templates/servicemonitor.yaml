@@ -24,6 +24,9 @@ spec:
   {{- if .Values.prometheus.monitor.interval }}
       interval: {{ .Values.prometheus.monitor.interval }}
   {{- end }}
+  {{- if .Values.prometheus.monitor.scrapeTimeout }}
+      scrapeTimeout: {{ .Values.prometheus.monitor.scrapeTimeout }}
+  {{- end }}
   {{- with .Values.prometheus.monitor.metricRelabelings }}
       metricRelabelings:
         {{- toYaml . | nindent 6 }}
