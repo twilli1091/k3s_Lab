@@ -5,10 +5,7 @@ metadata:
   namespace: prometheus 
 data:
   idrac.yml: |
-    auths:
-      default:
+    hosts:
+      10.0.0.129:
         username: "${IDRAC_USER}"
         password: "${IDRAC_PASS}"
-    targets:
-      10.0.0.129:
-        auth: default
