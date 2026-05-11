@@ -26,11 +26,10 @@ image:
   pullPolicy: IfNotPresent
 
 service:  
-  ports:
-  - port: 9110
-    targetPort: 9348
-    protocol: TCP
-    name: http
+  port: 9110
+  targetPort: 9348
+  protocol: TCP
+  name: http
   type: LoadBalancer
 
 serviceAccount:
