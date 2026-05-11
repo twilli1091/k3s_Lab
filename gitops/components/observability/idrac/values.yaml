@@ -37,4 +37,4 @@ serviceAccount:
   
   
 scrapeConfig:
-  enabled: false
+  enabled: true
