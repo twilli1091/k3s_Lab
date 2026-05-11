@@ -1,6 +1,8 @@
 
 # iDRAC Exporter Configuration
 idracConfig: |
+  port: 9348
+    timeout: 60
   hosts:
     default:
       username: IDRAC_USER
