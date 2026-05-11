@@ -8,6 +8,7 @@ metadata:
     app: {{ template "idrac-exporter.name" . }}
     chart: {{ template "idrac-exporter.chart" . }}
     heritage: {{ .Release.Service }}
+    release: prometheus
   {{- if .Values.prometheus.monitor.additionalLabels }}
 {{ toYaml .Values.prometheus.monitor.additionalLabels | indent 4 }}
   {{- end }}
