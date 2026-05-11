@@ -14,8 +14,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: {{ template "idrac-exporter.name" . }}
-      release: {{ .Release.Name }}
+      app.kubernetes.io/name: {{ template "idrac-exporter.name" . }}
   endpoints:
     - port: http
   {{- if .Values.prometheus.monitor.interval }}
