@@ -1,4 +1,4 @@
-
+replicaCount: 1
 # iDRAC Exporter Configuration
 idracConfig: |
   port: 9348
@@ -38,6 +38,7 @@ serviceAccount:
   
 prometheus:
   monitor:
+  enabled: true
   idrac.yml: |
     - job_name: 'idrac'
       metrics_path: '/metrics'
