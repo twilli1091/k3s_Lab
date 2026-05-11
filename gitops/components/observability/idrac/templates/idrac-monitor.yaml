@@ -21,7 +21,7 @@ spec:
           targetLabel: instance
         - action: replace      
           targetLabel: __address__
-          replacement: 10.0.0.201:9348
+          replacement: 10.0.0.201:9110
 ---
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
