@@ -34,3 +34,7 @@ service:
 serviceAccount:
   create: true
   automount: true
+  
+  
+scrapeConfig:
+  enabled: false
