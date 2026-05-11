@@ -14,19 +14,16 @@ spec:
       port: 443
       targetPort: 443
 ---
-apiVersion: discovery.k8s.io/v1
-kind: EndpointSlice
+apiVersion: v1
+kind: Endpoints
 metadata:
   name: idrac-external-service
   namespace: prometheus
   labels:
-    kubernetes.io/service-name: idrac-external-service
-addressType: IPv4
-ports:
-  - name: metrics
-    port: 443
-endpoints:
+    app: idrac-metrics
+subsets:
   - addresses:
-      - "10.0.0.129"
-    conditions:
-      ready: true
+      - ip: "10.0.0.129"
+    ports:
+      - name: metrics
+        port: 443
