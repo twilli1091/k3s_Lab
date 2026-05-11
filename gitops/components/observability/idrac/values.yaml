@@ -4,10 +4,9 @@ idracConfig: |
   port: 9348
   timeout: 60
   hosts:
-    default:
+    10.0.0.129:
       username: ${IDRAC_USER}
       password: ${IDRAC_PASS}
-      address: "10.0.0.129"
       port: 443
   metrics:
     all: true
