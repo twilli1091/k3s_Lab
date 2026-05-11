@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: idrac-external-service
+  namespace: prometheus
+  labels:
+    app: idrac-metrics
+  annotations:
+    metallb.universe.tf/address-pool: "home-lab-pool"
+spec:
+  type: LoadBalancer
+  ports:
+    - name: metrics
+      port: 443
+      targetPort: 443
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: idrac-external-service
+  namespace: prometheus
+  labels:
+    app: idrac-metrics
+subsets:
+  - addresses:
+      - ip: "10.0.0.129"
+    ports:
+      - name: metrics
+        port: 443
