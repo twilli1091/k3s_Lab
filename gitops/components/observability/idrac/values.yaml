@@ -36,5 +36,3 @@ serviceAccount:
   automount: true
   
   
-scrapeConfig:
-  enabled: true
