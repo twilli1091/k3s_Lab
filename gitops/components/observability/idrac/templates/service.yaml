@@ -1,15 +1,31 @@
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: idrac-exporter 
+#   annotations:
+#     metallb.universe.tf/address-pool: "home-lab-pool"
+# spec:
+#   type: LoadBalancer
+#   ports:
+#     - port: 9110
+#       targetPort: 9348
+#       protocol: TCP
+#       name: http
+#   selector:
+#     app: idrac-exporter
+
 apiVersion: v1
 kind: Service
 metadata:
-  name: idrac-exporter 
-  annotations:
-    metallb.universe.tf/address-pool: "home-lab-pool"
+  name: {{ include "idrac-exporter.fullname" . }}
+  labels:
+    {{- include "idrac-exporter.labels" . | nindent 4 }}
 spec:
-  type: LoadBalancer
+  type: {{ .Values.service.type }}
   ports:
-    - port: 9110
-      targetPort: 9348
+    - port: {{ .Values.service.port }}
+      targetPort: http
       protocol: TCP
       name: http
   selector:
-    app: idrac-exporter
+    {{- include "idrac-exporter.selectorLabels" . | nindent 4 }}
