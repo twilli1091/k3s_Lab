@@ -5,6 +5,8 @@ metadata:
   namespace: prometheus
 data:
   idrac.yml: |
+    metrics:
+      all: true
     - job_name: 'idrac'
       metrics_path: '/metrics'
       static_configs:
