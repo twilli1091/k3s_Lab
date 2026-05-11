@@ -15,13 +15,14 @@ spec:
       path: /metrics
       interval: 15s
       relabelings:
-        - action: replace
-          sourceLabels:
-            - __address__
+        - sourceLabels: [__address__]
+          regex: (.*):.*
+          targetLabel: __param_target
+          replacement: ${1}
+        - sourceLabels: [__param_target]
           targetLabel: instance
-        - action: replace      
-          targetLabel: __address__
-          replacement: 10.0.0.201:9110
+        - targetLabel: __address__
+          replacement: idrac-exporter.prometheus.svc.cluster.local:9110
 ---
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
@@ -41,8 +42,10 @@ spec:
         module: [dell_power]
       relabelings:
         - sourceLabels: [__address__]
+          regex: (.*):.*
           targetLabel: __param_target
+          replacement: ${1}
         - sourceLabels: [__param_target]
           targetLabel: instance
         - targetLabel: __address__
-          replacement: 10.0.0.201:9110 
+          replacement: idrac-exporter.prometheus.svc.cluster.local:9110 
