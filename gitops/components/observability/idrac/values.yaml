@@ -2,13 +2,13 @@ replicaCount: 1
 # iDRAC Exporter Configuration
 idracConfig: |
   port: 9348
-    timeout: 60
+  timeout: 60
   hosts:
     default:
       username: IDRAC_USER
       password: IDRAC_PASS
   metrics:
-      all: true
+    all: true
 
 env:
 - name: IDRAC_USER
@@ -38,7 +38,7 @@ serviceAccount:
   
 prometheus:
   monitor:
-  enabled: true
+    enabled: true
   idrac.yml: |
     - job_name: 'idrac'
       metrics_path: '/metrics'
