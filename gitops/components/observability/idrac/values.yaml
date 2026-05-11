@@ -3,7 +3,7 @@ poolName: home-lab-pool
 ipRange: "10.0.0.200-10.0.0.245"
 
 # iDRAC Exporter Configuration
-config: |
+idracConfig: |
   targets:
     10.0.0.129:  # Replace with your actual iDRAC IP
       auth: default
@@ -22,7 +22,8 @@ env:
 #       key: password
 image:
   repository: ghcr.io/mrlhansen/idrac_exporter
-  tag: latest
+  pullPolicy: IfNotPresent
+  tag: latest 
 
 service:
   type: LoadBalancer
