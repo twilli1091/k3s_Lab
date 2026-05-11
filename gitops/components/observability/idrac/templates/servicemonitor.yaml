@@ -18,9 +18,9 @@ spec:
       app.kubernetes.io/name: {{ template "idrac-exporter.name" . }}
   endpoints:
     - port: http
-      relabelings:
-        - targetLabel: __param_target
-          replacement: "10.0.0.129"
+      params:
+        target:
+          - "10.0.0.129"
   {{- if .Values.prometheus.monitor.interval }}
       interval: {{ .Values.prometheus.monitor.interval }}
   {{- end }}
