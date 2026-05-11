@@ -20,7 +20,7 @@ spec:
     - port: http
       params:
         target:
-          - "10.0.0.129"
+          - {{ .Values.prometheus.monitor.target | quote }}
   {{- if .Values.prometheus.monitor.interval }}
       interval: {{ .Values.prometheus.monitor.interval }}
   {{- end }}

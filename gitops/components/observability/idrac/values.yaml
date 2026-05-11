@@ -7,6 +7,8 @@ idracConfig: |
     default:
       username: ${IDRAC_USER}
       password: ${IDRAC_PASS}
+      address: "10.0.0.129"
+      port: 443
   metrics:
     all: true
 
@@ -39,3 +41,4 @@ serviceAccount:
 prometheus:
   monitor:
     enabled: true
+    target: "10.0.0.129"
