@@ -5,7 +5,7 @@ metadata:
   name: idrac-monitor
   namespace: prometheus
   labels:
-    release: prometheus
+    release: prometheus-stack
 spec:
   selector:
     matchLabels:
@@ -29,7 +29,7 @@ metadata:
   name: idrac-snmp-monitor
   namespace: prometheus
   labels:
-    release: prometheus
+    release: prometheus-stack 
 spec:
   selector:
     matchLabels:
@@ -37,15 +37,12 @@ spec:
   endpoints:
     - port: metrics
       path: /snmp
-      interval: 15s
       params:
         module: [dell_power]
-        auth: [public_v2]
       relabelings:
-        - action: replace
-          sourceLabels: [__address__]
+        - sourceLabels: [__address__]
           targetLabel: __param_target
-        - action: replace
-          sourceLabels: [__address__]
-          targetLabel: __param_target
-          replacement: 10.0.0.201:9110 # Your Unraid SNMP Exporter
+        - sourceLabels: [__param_target]
+          targetLabel: instance
+        - targetLabel: __address__
+          replacement: 10.0.0.201:9110 
