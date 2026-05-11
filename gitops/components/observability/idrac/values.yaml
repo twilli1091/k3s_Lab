@@ -1,26 +1,28 @@
 
 # iDRAC Exporter Configuration
 idracConfig: |
-  targets:
-    10.0.0.129:  # Replace with your actual iDRAC IP
-      auth: default
+  # targets:
+  #   10.0.0.129:  # Replace with your actual iDRAC IP
+  hosts:
+    default:
+      username: USERNAME
+      password: PASSWORD
   metrics:
       all: true
 env:
-# - name: IDRAC_USER
-#   valueFrom:
-#     secretKeyRef:
-#       name: idrac-credentials
-#       key: username
-# - name: IDRAC_PASS
-#   valueFrom:
-#     secretKeyRef:
-#       name: idrac-credentials
-#       key: password
+- name: IDRAC_USER
+  valueFrom:
+    secretKeyRef:
+      name: idrac-credentials
+      key: username
+- name: IDRAC_PASS
+  valueFrom:
+    secretKeyRef:
+      name: idrac-credentials
+      key: password
 image:
   repository: ghcr.io/mrlhansen/idrac_exporter
   pullPolicy: IfNotPresent
-  tag: latest 
 
 service:
   type: LoadBalancer
