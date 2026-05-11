@@ -41,3 +41,5 @@ prometheus:
   monitor:
     enabled: true
     target: "10.0.0.129"
+    interval: 60s
+    scrapeTimeout: 50s
