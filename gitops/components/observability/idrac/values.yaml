@@ -22,6 +22,8 @@ config: |
   targets:
     10.0.0.129:  # Replace with your actual iDRAC IP
       auth: default
+  metrics:
+      all: true
 
 image:
   repository: ghcr.io/mrlhansen/idrac_exporter
