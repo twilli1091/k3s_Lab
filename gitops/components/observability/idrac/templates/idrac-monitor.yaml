@@ -5,7 +5,7 @@ metadata:
   name: idrac-monitor
   namespace: prometheus
   labels:
-    release: prometheus-stack
+    release: prometheus
 spec:
   selector:
     matchLabels:
@@ -29,7 +29,7 @@ metadata:
   name: idrac-snmp-monitor
   namespace: prometheus
   labels:
-    release: prometheus-stack 
+    release: prometheus 
 spec:
   selector:
     matchLabels:
