@@ -5,8 +5,8 @@ idracConfig: |
   timeout: 60
   hosts:
     default:
-      username: IDRAC_USER
-      password: IDRAC_PASS
+      username: ${IDRAC_USER}
+      password: ${IDRAC_PASS}
   metrics:
     all: true
 
