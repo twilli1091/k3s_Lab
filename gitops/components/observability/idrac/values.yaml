@@ -1,6 +1,3 @@
-# MetalLB Integration
-poolName: home-lab-pool
-ipRange: "10.0.0.200-10.0.0.245"
 
 # iDRAC Exporter Configuration
 idracConfig: |
