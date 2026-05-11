@@ -20,7 +20,7 @@ prometheus:
           - source_labels: [__param_target]
             target_label: instance
           - target_label: __address__
-            replacement: 10.0.0.200:9348
+            replacement: 10.0.0.201:9110
 
       - job_name: 'idrac_snmp'
         metrics_path: /snmp
