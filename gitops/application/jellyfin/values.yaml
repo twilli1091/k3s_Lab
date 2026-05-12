@@ -272,9 +272,11 @@ persistence:
   media:
     # -- set to false to use emptyDir
     enabled: true
-    type: pvc
-    # Bypasses storageClass entirely to use the static Unraid connection
-    existingClaim: 'unraid-media-pvc'
+    type: custom # Changes from 'pvc' to 'custom'
+    volumeSpec:
+      nfs:
+        server: 10.0.0.5  # Your Unraid IP
+        path: /mnt/user/media # Your Unraid share path
 
   cache:
     # -- set to false to use emptyDir
