@@ -166,6 +166,7 @@ httpRoute:
           kind: Service
           name: jellyfin
           port: 8096
+          targetport: 80
           weight: 1
 # -- Resource requests and limits for the Jellyfin container.
 resources: {}
