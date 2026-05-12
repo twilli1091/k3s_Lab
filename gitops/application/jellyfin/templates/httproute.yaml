@@ -19,17 +19,17 @@ spec:
     {{- toYaml . | nindent 4 }}
   {{- end }}
   rules:
-    {{- range .Values.httpRoute.rules }}
-    - matches:
-        {{- range .matches }}
-        - path:
-            type: {{ .path.type }}
-            value: {{ .path.value }}
-        {{- end }}
-      backendRefs:
-        - group: {{ $.Values.service.group }}	
-          kind: {{ $.Values.httpRoute.backendRefs.kind }}	
-        - name: {{ include "jellyfin.fullname" $ }}
-          port: {{ $.Values.httpRoute.backendRefs.port }}
+      {{- range .Values.httpRoute.rules }}
+      - matches:
+          {{- toYaml .matches | nindent 8 }}
+        backendRefs:
+          {{- range .backendRefs }}
+          - group: {{ .group | default "" }}
+            kind: {{ .kind | default "Service" }}
+            name: {{ .name }}
+            port: {{ .port }}
+            weight: {{ .weight | default 1 }}
+          {{- end }}
+      {{- end }}
     {{- end }}
 {{- end }}
