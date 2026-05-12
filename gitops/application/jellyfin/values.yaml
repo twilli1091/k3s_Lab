@@ -277,9 +277,11 @@ persistence:
     storageClass: 'longhorn'
   media:
     enabled: true
-    type: pvc
-    existingClaim: unraid-media-pvc # Use the PVC you already made
+    type: pvc            # Ensure this is 'pvc'
+    existingClaim: unraid-media-pvc
     mountPath: /media
+    # Add this line if the chart supports it to ensure it overrides the default:
+    name: media
 
   cache:
     # -- set to false to use emptyDir
