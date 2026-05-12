@@ -113,7 +113,7 @@ service:
   port: 8096
   # -- Name of the port in the service.
   portName: service
-  targetPort: 80
+  targetport: 80
   # -- Annotations for the service.
   annotations: 
     metallb.universe.tf/address-pool: "home-lab-pool"
