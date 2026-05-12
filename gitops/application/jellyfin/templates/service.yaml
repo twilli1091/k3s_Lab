@@ -50,7 +50,7 @@ spec:
     - name: {{ .Values.service.name | default "http" }}
       port: {{ .Values.service.port }}
       protocol: TCP
-      targetPort: {{ .Values.service.targetport }}
+      targetport: {{ .Values.service.targetport }}
       {{- if (and (eq .Values.service.type "NodePort") (not (empty .Values.service.nodePort))) }}
       nodePort: {{ .Values.service.nodePort }}
       {{- end }}
