@@ -102,7 +102,9 @@ service:
   #   Dual-stack (IPv4 primary): ["IPv4", "IPv6"]
   #   Dual-stack (IPv6 primary): ["IPv6", "IPv4"]
   # Note: When using IPv6, ensure your health checks are compatible (consider using httpGet instead of tcpSocket)
-  ipFamilies: []
+  ipFamilies: [
+    - metallb.universe.tf/address-pool: "home-lab-pool"
+  ]
   # -- Specific IP address for the LoadBalancer.
   loadBalancerIP: ""
   # -- Class of the LoadBalancer.
@@ -114,8 +116,7 @@ service:
   # -- Name of the port in the service.
   portName: service
   # -- Annotations for the service.
-  annotations: 
-  - metallb.universe.tf/address-pool: "home-lab-pool"
+  annotations: {}
   # -- Labels for the service.
   labels: {}
   # -- External traffic policy (Cluster or Local).
