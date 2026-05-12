@@ -217,15 +217,12 @@ readinessProbe:
 
 # -- Additional volumes to mount in the Jellyfin pod.
 volumes: 
-# - name: foo
-#   secret:
-#     secretName: mysecret
-#     optional: false
-# -- Additional volume mounts for the Jellyfin container.
-volumeMounts: []
-# - name: foo
-#   mountPath: "/etc/foo"
-#   readOnly: true
+  - name: media
+    persistentVolumeClaim:
+      claimName: unraid-media-pvc
+volumeMounts: 
+  - name: media
+    mountPath: /media
 
 # -- Node selector for pod scheduling.
 nodeSelector: {}
