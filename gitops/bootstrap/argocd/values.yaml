@@ -5,9 +5,7 @@ argo-cd:
     extraArgs:
       - --insecure
     service:
-      type: NodePort
-      nodePortHttp: 30080
-      nodePortHttps: 30443
+      type: ClusterIP
   configs:
     cm:
       resource.exclusions: |
