@@ -217,12 +217,8 @@ readinessProbe:
 
 # -- Additional volumes to mount in the Jellyfin pod.
 volumes: 
-  - name: media
-    persistentVolumeClaim:
-      claimName: unraid-media-pvc
+
 volumeMounts: 
-  - name: media
-    mountPath: /media
 
 # -- Node selector for pod scheduling.
 nodeSelector: {}
