@@ -1,4 +1,4 @@
-piVersion: apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: fan-control-manager
@@ -19,12 +19,12 @@ spec:
           - name: IDRAC_IP
             valueFrom:
               secretKeyRef:
-                name: fan-control-secrets # This matches the SealedSecret metadata.name
+                name: fan-control-secrets 
                 key: IDRAC_IP
           - name: IDRAC_USER
             valueFrom:
               secretKeyRef:
-                name: fan-control-secrets # This matches the SealedSecret metadata.name
+                name: fan-control-secrets 
                 key: IDRAC_USER
           - name: IDRAC_PW
             valueFrom:
