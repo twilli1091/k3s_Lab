@@ -114,7 +114,8 @@ service:
   # -- Name of the port in the service.
   portName: service
   # -- Annotations for the service.
-  annotations: {}
+  annotations: 
+    - metallb.universe.tf/address-pool: "home-lab-pool"
   # -- Labels for the service.
   labels: {}
   # -- External traffic policy (Cluster or Local).
