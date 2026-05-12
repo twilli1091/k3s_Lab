@@ -148,7 +148,8 @@ httpRoute:
   parentRefs: 
     - name: shared-gateway
       namespace: infrastructure
-      sectionName: http
+      group: gateway.networking.k8s.io # Good practice to keep this
+      kind: Gateway
     # - name: my-gateway
     #   namespace: gateway-system
     #   sectionName: https
