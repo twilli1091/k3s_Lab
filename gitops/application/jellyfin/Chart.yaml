@@ -10,3 +10,7 @@ keywords:
   - self-hosted
 version: 3.2.0
 appVersion: 10.11.8
+dependencies:
+  - name: jellyfin
+    version: 3.2.0  # Pin the version here
+    repository: https://jellyfin.github.io/jellyfin-helm
