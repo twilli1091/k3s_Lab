@@ -162,7 +162,7 @@ httpRoute:
             type: PathPrefix
             value: /
       backendRefs:
-          group: ''	
+        - group: ''	
           kind: Service
           name: longhorn-frontend
           port: 80
