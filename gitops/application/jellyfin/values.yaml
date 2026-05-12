@@ -142,16 +142,19 @@ ingress:
 # -- HTTPRoute configuration for Gateway API. See: https://gateway-api.sigs.k8s.io/
 httpRoute:
   enabled: true
-  annotations: {}
-  # -- Gateway references to attach this HTTPRoute to
+  annotations: 
+    meta.helm.sh/release-name: envoy-gateway                                                                                                                                                                     │
+    meta.helm.sh/release-namespace: envoy-gateway-system
   parentRefs: 
     - name: shared-gateway
       namespace: infrastructure
-      group: gateway.networking.k8s.io
-      kind: Gateway
-  hostnames: 
-    grafana.10-0-0-200.nip.io
-  # -- Rules for routing traffic
+      sectionName: http
+    # - name: my-gateway
+    #   namespace: gateway-system
+    #   sectionName: https
+  # -- Hostnames to match for this HTTPRoute
+  hostnames:
+    -jellyfin.10-0-0-200.nip.io
   rules:
     - matches:
         - path:
