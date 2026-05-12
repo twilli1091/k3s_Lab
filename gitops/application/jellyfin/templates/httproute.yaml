@@ -23,12 +23,15 @@ spec:
     - matches:
         {{- toYaml .matches | nindent 8 }}
       backendRefs:
+        # Note: Added a dash in values.yaml to make this a list
         {{- range .backendRefs }}
-        - group: {{ .group | default "" }}
+        - group: {{ .group | default "" | quote }}
           kind: {{ .kind | default "Service" }}
           name: {{ .name }}
           port: {{ .port }}
-          weight: {{ .weight | default 1 }}
+          {{- if .weight }}
+          weight: {{ .weight }}
+          {{- end }}
         {{- end }}
     {{- end }}
 {{- end }}
