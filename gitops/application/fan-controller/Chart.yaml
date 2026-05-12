@@ -1,0 +1,4 @@
+apiVersion: v2
+name: fan-controller
+version: 1.0.0
+description: "fancontroller for r730"

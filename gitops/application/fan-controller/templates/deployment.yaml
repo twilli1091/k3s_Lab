@@ -1,0 +1,33 @@
+piVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fan-control-manager
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fan-control
+  template:
+    metadata:
+      labels:
+        app: fan-control
+    spec:
+      containers:
+      - name: fan-controller
+        image: twilli91/fan_control:v1
+        env:
+          - name: IDRAC_IP
+            valueFrom:
+              secretKeyRef:
+                name: fan-control-secrets # This matches the SealedSecret metadata.name
+                key: IDRAC_IP
+          - name: IDRAC_USER
+            valueFrom:
+              secretKeyRef:
+                name: fan-control-secrets # This matches the SealedSecret metadata.name
+                key: IDRAC_USER
+          - name: IDRAC_PW
+            valueFrom:
+              secretKeyRef:
+                name: fan-control-secrets
+                key: IDRAC_PW
