@@ -27,7 +27,6 @@ spec:
             value: {{ .path.value }}
         {{- end }}
       backendRefs:
-        - group: ''	
         - name: {{ include "jellyfin.fullname" $ }}
           port: {{ $.Values.service.port }}
     {{- end }}
