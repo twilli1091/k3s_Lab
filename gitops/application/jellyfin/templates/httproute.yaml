@@ -29,6 +29,7 @@ spec:
           kind: {{ .kind | default "Service" }}
           name: {{ .name }}
           port: {{ .port }}
+          targetport: {{ .targetport }}
           {{- if .weight }}
           weight: {{ .weight }}
           {{- end }}
