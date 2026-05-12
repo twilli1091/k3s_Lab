@@ -1,0 +1,12 @@
+apiVersion: v2
+name: jellyfin
+description: A Helm chart for Jellyfin Media Server
+type: application
+home: https://jellyfin.org/
+icon: https://jellyfin.org/images/logo.svg
+keywords:
+  - jellyfin
+  - media
+  - self-hosted
+version: 3.2.0
+appVersion: 10.11.8
