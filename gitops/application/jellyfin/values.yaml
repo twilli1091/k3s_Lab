@@ -164,7 +164,7 @@ httpRoute:
       backendRefs:
         - group: ''	
           kind: Service
-          name: longhorn-frontend
+          name: jellyfin
           port: 80
           weight: 1
 # -- Resource requests and limits for the Jellyfin container.
