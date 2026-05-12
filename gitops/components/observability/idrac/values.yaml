@@ -31,7 +31,7 @@ service:
   targetPort: 9348
   protocol: TCP
   name: http
-  type: LoadBalancer
+  type: ClusterIP
 
 serviceAccount:
   create: true
