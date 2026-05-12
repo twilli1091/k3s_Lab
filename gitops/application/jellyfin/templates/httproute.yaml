@@ -30,6 +30,6 @@ spec:
         - name: {{ include "jellyfin.fullname" $ }}
           port: {{ $.Values.service.port }}
           - group: gateway.networking.k8s.io	
-            kind: Gateway
+          kind: Gateway
     {{- end }}
 {{- end }}
