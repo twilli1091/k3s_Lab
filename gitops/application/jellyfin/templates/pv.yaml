@@ -20,6 +20,7 @@ metadata:
   name: unraid-media-pvc
   namespace: jellyfin
 spec:
+  storageClassName: ""
   accessModes:
     - ReadWriteMany
   resources:
