@@ -154,7 +154,7 @@ httpRoute:
     #   sectionName: https
   # -- Hostnames to match for this HTTPRoute
   hostnames:
-    -jellyfin.10-0-0-200.nip.io
+    jellyfin.10-0-0-200.nip.io
   rules:
     - matches:
         - path:
