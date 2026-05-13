@@ -1,50 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nvdp
+  name: gpu-infrastructure
   namespace: argocd
 spec:
   project: default
   source:
-    chart: nvidia-device-plugin
-    # Standard Helm repo for NVIDIA device plugin. 
-    # Update if your 'nvdp' alias points to a private registry.
-    repoURL: https://nvidia.github.io/k8s-device-plugin 
-    targetRevision: 0.14.5 # It is highly recommended to pin a specific chart version
-    helm:
-      parameters:
-        # Replaces: --set runtimeClassName=nvidia
-        - name: runtimeClassName
-          value: nvidia
-        
-        # Replaces: --set-string nodeSelector."nvidia\.com/gpu\.present"=true
-        - name: nodeSelector.nvidia\.com/gpu\.present
-          value: "true"
-          forceString: true
-      
-      # Replaces: -f components/gpu/templates/time-slice.yaml
-      # Because Argo CD pulls from a Helm repo, it cannot read your local local file. 
-      # You must inline the YAML contents of time-slice.yaml here:
-      valuesObject:
-        
-        # --- ADD YOUR REPLICAS HERE ---
-        # Note: Check your chart's values.yaml to see if it expects 
-        # 'replicas' or 'replicaCount'
-        replicas: 10
-        config:
-          map:
-            default: |-
-              version: v1
-              flags:
-                migStrategy: none
-        # ---------------------------------------------------
+    repoURL: https://github.com/your-org/your-repo.git
+    path: gitops/components/gpu # Path to where your Chart.yaml lives
+    targetRevision: HEAD
 
   destination:
     server: https://kubernetes.default.svc
     namespace: nvidia-device-plugin
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true # Ensures the namespace is created if it doesn't exist
+    automated: {}
