@@ -48,7 +48,8 @@ podSecurityContext: {}
   # fsGroup: 2000
 
 # -- Security context for the container.
-securityContext: {}
+securityContext:
+  privileged: true
   # capabilities:
   #   drop:
   #   - ALL
