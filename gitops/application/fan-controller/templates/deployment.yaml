@@ -4,7 +4,7 @@ metadata:
   name: fan-control-manager
   namespace: fan-control
 spec:
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels:
       app: fan-control
