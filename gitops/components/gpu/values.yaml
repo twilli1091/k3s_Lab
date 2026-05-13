@@ -1,0 +1,16 @@
+# Global settings or your own templates
+replicaCount: 10 # This is now a top-level value for YOUR chart
+
+# Nested configuration for the NVIDIA sub-chart
+nvidia-device-plugin:
+  runtimeClassName: nvidia
+  nodeSelector:
+    nvidia.com/gpu.present: "true"
+  
+  # Paste your time-slice configuration here
+  config:
+    map:
+      default: |-
+        version: v1
+        flags:
+          migStrategy: none
