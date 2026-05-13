@@ -4,8 +4,7 @@ prometheus:
   prometheusSpec:
     # 1. ADD THESE TWO LINES
     # This tells Prometheus to automatically scrape ANY ServiceMonitor it finds
-    serviceMonitorSelectorNilUsesHelmValues: false
-    serviceMonitorSelector: {}
+
 
     # This replaces the old "server" block
     service:
