@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/your-org/your-repo.git
+    repoURL: 'https://github.com/twilli1091/k3s_lab.git'
     path: gitops/components/gpu/ # Path to where your Chart.yaml lives
     targetRevision: HEAD
 
