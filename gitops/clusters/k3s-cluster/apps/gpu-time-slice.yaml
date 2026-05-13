@@ -26,8 +26,11 @@ spec:
       # Because Argo CD pulls from a Helm repo, it cannot read your local local file. 
       # You must inline the YAML contents of time-slice.yaml here:
       valuesObject:
-        # --- PASTE THE CONTENTS OF time-slice.yaml BELOW ---
-        # Example format:
+        
+        # --- ADD YOUR REPLICAS HERE ---
+        # Note: Check your chart's values.yaml to see if it expects 
+        # 'replicas' or 'replicaCount'
+        replicas: 10
         config:
           map:
             default: |-
