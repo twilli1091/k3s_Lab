@@ -311,7 +311,7 @@ persistence:
     hostPath: ""
     # -- PVC specific settings, only used if type is 'pvc'.
     accessMode: ReadWriteOnce
-    size: 10Gi
+    size: 15Gi
     # -- Custom annotations to be added to the PVC
     annotations: {}
     # -- If undefined (the default) or set to null, no storageClassName spec is set, choosing the default provisioner.
