@@ -221,9 +221,9 @@ volumes:
 volumeMounts: 
 
 # -- Node selector for pod scheduling.
-nodeSelector: 
-  - nodeSelector:
-          hardware: gpu-3060
+nodeSelector: |
+  nodeSelector:
+    hardware: gpu-3060
 
 # -- Tolerations for pod scheduling.
 tolerations: []
