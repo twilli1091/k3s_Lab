@@ -1,4 +1,9 @@
-# Values for kube-prometheus-stack
+grafana:
+  admin:
+    # This must match the name of your SealedSecret
+    existingSecret: "grafana-admin-credentials"
+    userKey: admin-user
+    passwordKey: admin-password
 prometheus:
   enabled: true
   prometheusSpec:
