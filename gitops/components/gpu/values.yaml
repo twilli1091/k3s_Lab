@@ -1,5 +1,5 @@
 
-nodeSelector:
+nodeSelector: |
   nvidia.com/gpu.present: "true"
 
 # This tells the plugin to use the NVIDIA runtime
