@@ -1,5 +1,6 @@
-# Settings for the upstream NVIDIA chart
 dcgm-exporter:
+  runtimeClassName: nvidia
+  
   nodeSelector:
     nvidia.com/gpu.present: "true"
     
