@@ -30,6 +30,9 @@ prometheus:
             target_label: instance
           - target_label: __address__
             replacement: 'idrac-exporter.prometheus.svc.cluster.local:9110'
+          - source_labels: [__name__]
+            regex: '.*_bucket'
+            action: drop
 
       - job_name: 'idrac_snmp'
         metrics_path: /snmp
