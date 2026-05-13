@@ -57,8 +57,7 @@ securityContext: {}
   # runAsUser: 1000
 
 # -- Define a custom runtimeClassName for the pod.
-runtimeClassName: ''
-
+runtimeClassName: 'nvidia'
 # -- Define a priorityClassName for the pod.
 priorityClassName: ""
 
@@ -213,8 +212,28 @@ readinessProbe:
 
 # -- Additional volumes to mount in the Jellyfin pod.
 volumes: 
+  - name: dri
+    hostPath:
+      path: /dev/dri
+  - name: nvidia0
+    hostPath:
+      path: /dev/nvidia0
+  - name: nvidiactl
+    hostPath:
+      path: /dev/nvidiactl
+  - name: nvidia-uvm
+    hostPath:
+      path: /dev/nvidia-uvm
 
 volumeMounts: 
+  - mountPath: /dev/dri
+    name: dri
+  - mountPath: /dev/nvidia0
+    name: nvidia0
+  - mountPath: /dev/nvidiactl
+    name: nvidiactl
+  - mountPath: /dev/nvidia-uvm
+    name: nvidia-uvm
 
 # -- Node selector for pod scheduling.
 nodeSelector: 
