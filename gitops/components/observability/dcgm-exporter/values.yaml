@@ -1,8 +1,14 @@
 dcgm-exporter:
   runtimeClassName: nvidia
-  
   nodeSelector:
     nvidia.com/gpu.present: "true"
-    
+  
+  rbac:
+    create: true
+  serviceAccount:
+    create: true
+    automountServiceAccountToken: true 
+  # ------------------------------------------
+
   serviceMonitor:
     enabled: true
