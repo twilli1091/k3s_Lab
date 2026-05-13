@@ -1,26 +1,19 @@
-# # Global settings or your own templates
-# replicaCount: 10 # This is now a top-level value for YOUR chart
+helm:
+  values: |
+    # This ensures it only runs on your GPU node
+    nodeSelector:
+      nvidia.com/gpu.present: "true"
+    
+    # This tells the plugin to use the NVIDIA runtime
+    runtimeClassName: nvidia
 
-# # Nested configuration for the NVIDIA sub-chart
-# nvidia-device-plugin:
-#   runtimeClassName: nvidia
-#   nodeSelector:
-#     nvidia.com/gpu.present: "true"
-  
-#   # Paste your time-slice configuration here
-#   config:
-#     map:
-#       default: |-
-#         version: v1
-#         flags:
-#           migStrategy: none
-
-config:
-  map:
-    default: |-
-      version: v1
-      sharing:
-        timeSlicing:
-          resources:
-          - name: nvidia.com/gpu
-            replicas: 10
+    # The Time-Slicing logic
+    config:
+      map:
+        default: |-
+          version: v1
+          sharing:
+            timeSlicing:
+              resources:
+              - name: nvidia.com/gpu
+                replicas: 10
