@@ -1,19 +1,17 @@
-helm:
-  values: |
-    # This ensures it only runs on your GPU node
-    nodeSelector:
-      nvidia.com/gpu.present: "true"
-    
-    # This tells the plugin to use the NVIDIA runtime
-    runtimeClassName: nvidia
 
-    # The Time-Slicing logic
-    config:
-      map:
-        default: |-
-          version: v1
-          sharing:
-            timeSlicing:
-              resources:
-              - name: nvidia.com/gpu
-                replicas: 10
+nodeSelector:
+  nvidia.com/gpu.present: "true"
+
+# This tells the plugin to use the NVIDIA runtime
+runtimeClassName: nvidia
+
+# The Time-Slicing logic
+config:
+  map:
+    default: |-
+      version: v1
+      sharing:
+        timeSlicing:
+          resources:
+          - name: nvidia.com/gpu
+            replicas: 10
