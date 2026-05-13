@@ -11,8 +11,7 @@ spec:
     targetRevision: HEAD
     helm:
         valueFiles:
-          - $values/nvidia/my-custom-values.yaml
-
+          - gitops/components/gpu/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: nvidia-device-plugin
