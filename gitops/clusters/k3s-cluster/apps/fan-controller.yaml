@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: 'https://github.com/twilli1091/k3s_lab.git'
     targetRevision: HEAD
-    path: gitops/application/fan-controller
+    path: gitops/applications/fan-controller
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: fan-controller # Where it actually deploys

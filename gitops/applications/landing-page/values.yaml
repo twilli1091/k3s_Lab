@@ -1,0 +1,38 @@
+image:
+  repository: nginx
+  tag: alpine
+  pullPolicy: IfNotPresent
+
+replicaCount: 1
+
+service:
+  type: ClusterIP
+  port: 80
+
+httpRoute:
+  enabled: true
+  hostname: home.10-0-0-200.nip.io
+  gatewayName: shared-gateway
+  gatewayNamespace: infrastructure
+
+page:
+  title: "Homelab Landing Page"
+  links:
+    - name: ArgoCD
+      url: http://argocd.10-0-0-200.nip.io
+      icon: "https://argoproj.github.io/argo-cd/assets/favicon.png"
+    - name: Prometheus
+      url: http://prom.10-0-0-200.nip.io
+      icon: "https://prometheus.io/assets/favicons/favicon.ico"
+    - name: Grafana
+      url: http://grafana.10-0-0-200.nip.io
+      icon: "https://grafana.com/static/assets/img/fav32.png"
+    - name: Sealed Secrets
+      url: http://secret.10-0-0-200.nip.io
+      icon: ""
+    - name: Longhorn
+      url: http://longhorn.10-0-0-200.nip.io
+      icon: "https://longhorn.io/img/favicon.ico"
+    - name: Jellyfin
+      url: http://jellyfin.10-0-0-200.nip.io
+      icon: "https://jellyfin.org/images/favicon.ico"
