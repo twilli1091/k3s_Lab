@@ -14,3 +14,13 @@
 #         version: v1
 #         flags:
 #           migStrategy: none
+
+config:
+  map:
+    default: |-
+      version: v1
+      sharing:
+        timeSlicing:
+          resources:
+          - name: nvidia.com/gpu
+            replicas: 10
