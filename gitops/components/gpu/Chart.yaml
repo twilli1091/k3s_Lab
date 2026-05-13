@@ -1,4 +1,0 @@
-apiVersion: v2
-name: gpu-time-slice
-version: 1.0.0
-description: "gpu-time-clice for r730"

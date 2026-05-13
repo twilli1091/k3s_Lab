@@ -1,26 +1,47 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gpu-time-slice
-  namespace: argocd # Child apps must live in the argocd namespace
+  name: nvdp
+  namespace: argocd
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/twilli1091/k3s_lab.git'
-    targetRevision: HEAD
-    path: gitops/components/gpu
+    chart: nvidia-device-plugin
+    # Standard Helm repo for NVIDIA device plugin. 
+    # Update if your 'nvdp' alias points to a private registry.
+    repoURL: https://nvidia.github.io/k8s-device-plugin 
+    targetRevision: 0.14.5 # It is highly recommended to pin a specific chart version
+    helm:
+      parameters:
+        # Replaces: --set runtimeClassName=nvidia
+        - name: runtimeClassName
+          value: nvidia
+        
+        # Replaces: --set-string nodeSelector."nvidia\.com/gpu\.present"=true
+        - name: nodeSelector.nvidia\.com/gpu\.present
+          value: "true"
+          forceString: true
+      
+      # Replaces: -f components/gpu/templates/time-slice.yaml
+      # Because Argo CD pulls from a Helm repo, it cannot read your local local file. 
+      # You must inline the YAML contents of time-slice.yaml here:
+      valuesObject:
+        # --- PASTE THE CONTENTS OF time-slice.yaml BELOW ---
+        # Example format:
+        config:
+          map:
+            default: |-
+              version: v1
+              flags:
+                migStrategy: none
+        # ---------------------------------------------------
+
   destination:
-    server: 'https://kubernetes.default.svc'
-    namespace: nvidia-device-plugin+ # Where it actually deploys
+    server: https://kubernetes.default.svc
+    namespace: nvidia-device-plugin
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
-      - CreateNamespace=true
-      - ServerSideApply=true
-  ignoreDifferences:
-      - group: apps
-        kind: StatefulSet
-        jsonPointers:
-          - /status/terminatingReplicas
+      - CreateNamespace=true # Ensures the namespace is created if it doesn't exist
