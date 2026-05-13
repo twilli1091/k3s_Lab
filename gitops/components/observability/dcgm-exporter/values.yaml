@@ -11,3 +11,5 @@ dcgm-exporter:
 
   serviceMonitor:
     enabled: true
+    labels:
+      release: prometheus 
