@@ -18,7 +18,9 @@ spec:
       containers:
       - name: fan-controller
         image: twilli91/fan_control:v1.1
-
+        resources:
+          limits:
+            nvidia.com/gpu: 1
         env:
           - name: IDRAC_IP
             valueFrom:
