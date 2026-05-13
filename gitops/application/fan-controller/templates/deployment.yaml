@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: fan-controller
-        image: twilli91/fan_control:v1
+        image: twilli91/fan_control:v1.1
         env:
           - name: IDRAC_IP
             valueFrom:
