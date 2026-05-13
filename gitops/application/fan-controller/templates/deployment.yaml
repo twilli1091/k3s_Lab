@@ -15,7 +15,7 @@ spec:
     spec:
       nodeSelector:
           hardware: gpu-3060
-        runtimeClassName: nvidia
+      runtimeClassName: nvidia
       containers:
       - name: fan-controller
         image: twilli91/fan_control:v1.1
