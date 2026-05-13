@@ -9,6 +9,9 @@ spec:
     repoURL: 'https://github.com/twilli1091/k3s_lab.git'
     path: gitops/components/gpu/ # Path to where your Chart.yaml lives
     targetRevision: HEAD
+    helm:
+        valueFiles:
+          - $values/nvidia/my-custom-values.yaml
 
   destination:
     server: https://kubernetes.default.svc
