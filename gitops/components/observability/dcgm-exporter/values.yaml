@@ -1,0 +1,7 @@
+# Settings for the upstream NVIDIA chart
+dcgm-exporter:
+  nodeSelector:
+    nvidia.com/gpu.present: "true"
+    
+  serviceMonitor:
+    enabled: true

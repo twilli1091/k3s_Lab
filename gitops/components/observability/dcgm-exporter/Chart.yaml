@@ -1,0 +1,12 @@
+apiVersion: v2
+name: custom-dcgm-exporter
+description: Umbrella chart for NVIDIA DCGM Exporter
+type: application
+version: 0.1.0
+appVersion: "3.3.5"
+
+dependencies:
+  - name: dcgm-exporter
+    # You can pin a specific version here, or use "*" for latest
+    version: "*" 
+    repository: "https://nvidia.github.io/dcgm-exporter/helm-charts"
