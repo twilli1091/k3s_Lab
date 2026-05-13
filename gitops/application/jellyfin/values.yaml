@@ -169,13 +169,9 @@ httpRoute:
           port: 80
           weight: 1
 # -- Resource requests and limits for the Jellyfin container.
-resources: {}
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
+resources: 
+  limits:
+    nvidia.com/gpu: 1
 
 # -- Configure startup probe for Jellyfin.
 # This probe gives Jellyfin enough time to start, especially with large media libraries.
