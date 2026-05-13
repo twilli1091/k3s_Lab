@@ -257,7 +257,13 @@ jellyfin:
   # env:
   #   - name: JELLYFIN_CACHE_DIR
   #     value: /cache
-  env: []
+  env: 
+  - name: NVIDIA_VISIBLE_DEVICES
+    value: "all"
+  - name: NVIDIA_DRIVER_CAPABILITIES
+    value: "compute,video,utility" # "video" is the critical one here!
+  - name: NVIDIA_REQUIRE_CUDA
+    value: "cuda>=12.0"
   # - name: DOTNET_USE_POLLING_FILE_WATCHER
   #   value: "1"
 
