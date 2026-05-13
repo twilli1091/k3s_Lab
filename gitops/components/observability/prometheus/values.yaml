@@ -2,12 +2,17 @@
 prometheus:
   enabled: true
   prometheusSpec:
+    # 1. ADD THESE TWO LINES
+    # This tells Prometheus to automatically scrape ANY ServiceMonitor it finds
+    serviceMonitorSelectorNilUsesHelmValues: false
+    serviceMonitorSelector: {}
+
     # This replaces the old "server" block
     service:
       type: NodePort
       nodePort: 30090
     
-    # This is where your iDRAC static configs go now
+    # Your iDRAC static configs stay exactly as they are
     additionalScrapeConfigs: 
       - job_name: 'idrac'
         metrics_path: '/metrics'

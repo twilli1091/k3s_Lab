@@ -1,0 +1,22 @@
+metadata:
+  name: dcgm-exporter
+  namespace: argocd
+spec:
+  project: default
+  source:
+    # 1. Point this to YOUR Git repository containing the new folder
+    repoURL: 'https://github.com/twilli1091/k3s_lab.git'
+    targetRevision: HEAD
+    
+    # 2. Point to the folder path where your Chart.yaml lives
+    path: gitops/components/observability/dcgm-exporter/
+    
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: nvidia-device-plugin
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
