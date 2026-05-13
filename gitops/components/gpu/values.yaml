@@ -1,39 +1,39 @@
-helm:
-      values: |
-        nodeSelector:
-          nvidia.com/gpu.present: "true"
-        runtimeClassName: nvidia
-        
-        # --- ADD THESE SECTIONS ---
-        # This tells the plugin where to find the drivers on your Debian host
-        worker:
-          env:
-            - name: NVIDIA_DRIVER_CAPABILITIES
-              value: all
-        
-        # This mounts the host libraries so the Pod can "see" the GPU
-        allowDefaultNamespace: true
-        
-        # This ensures the plugin has access to the host's NVML libraries
-        volumes:
-          - name: lib
-            hostPath: /usr/lib/x86_64-linux-gnu
-          - name: bin
-            hostPath: /usr/bin
-        
-        volumeMounts:
-          - name: lib
-            mountPath: /usr/lib/x86_64-linux-gnu
-          - name: bin
-            mountPath: /usr/bin
-        # --------------------------
 
-        config:
-          map:
-            default: |-
-              version: v1
-              sharing:
-                timeSlicing:
-                  resources:
-                  - name: nvidia.com/gpu
-                    replicas: 10
+values: |
+  nodeSelector:
+    nvidia.com/gpu.present: "true"
+  runtimeClassName: nvidia
+  
+  # --- ADD THESE SECTIONS ---
+  # This tells the plugin where to find the drivers on your Debian host
+  worker:
+    env:
+      - name: NVIDIA_DRIVER_CAPABILITIES
+        value: all
+  
+  # This mounts the host libraries so the Pod can "see" the GPU
+  allowDefaultNamespace: true
+  
+  # This ensures the plugin has access to the host's NVML libraries
+  volumes:
+    - name: lib
+      hostPath: /usr/lib/x86_64-linux-gnu
+    - name: bin
+      hostPath: /usr/bin
+  
+  volumeMounts:
+    - name: lib
+      mountPath: /usr/lib/x86_64-linux-gnu
+    - name: bin
+      mountPath: /usr/bin
+  # --------------------------
+
+  config:
+    map:
+      default: |-
+        version: v1
+        sharing:
+          timeSlicing:
+            resources:
+            - name: nvidia.com/gpu
+              replicas: 10
