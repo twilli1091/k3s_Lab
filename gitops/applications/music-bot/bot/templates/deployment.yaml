@@ -14,7 +14,7 @@ spec:
         app: music-bot
     spec:
       containers:
-        - name: music-bot
+        name: music-bot
         env:
           # Defines an environment variable for the tunnel token.
           - name: TOKEN
