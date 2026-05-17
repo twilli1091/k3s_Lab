@@ -224,7 +224,7 @@ volumes:
       sizeLimit: 4Gi
 
 volumeMounts: 
-  - mountPath: /config/data/transcodes # Adjust if your Jellyfin setup uses a different path
+  - mountPath: /cache/transcodes
     name: transcode-dir
 
 # -- Node selector for pod scheduling.
