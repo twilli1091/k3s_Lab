@@ -22,7 +22,7 @@ spec:
               secretKeyRef:
                 name: discord-token
                 key: token
-          image: twilli91/music-bot:v2.3
+          image: twilli91/music-bot:v2.1
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
