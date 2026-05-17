@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: httpbin
-          image: twilli91/music-bot:v2.2
+          image: twilli91/music-bot:v2.3
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
