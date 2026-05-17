@@ -4,7 +4,7 @@ metadata:
   name: music-bot-service
   namespace: default
 spec:
-  type: clusterip
+  type: ClusterIP
   selector:
     app: music-bot
   ports:
