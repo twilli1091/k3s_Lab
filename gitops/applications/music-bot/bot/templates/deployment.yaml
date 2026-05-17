@@ -14,7 +14,14 @@ spec:
         app: music-bot
     spec:
       containers:
-        - name: httpbin
+        - name: music-bot
+        env:
+          # Defines an environment variable for the tunnel token.
+          - name: TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: discord-token
+                key: token
           image: twilli91/music-bot:v2.3
           imagePullPolicy: IfNotPresent
           ports:
