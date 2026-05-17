@@ -171,12 +171,12 @@ httpRoute:
 # -- Resource requests and limits for the Jellyfin container.
 resources: 
   requests:
-    cpu: 1000m      # 2 CPU cores
-    memory: 2Gi
+    cpu: 3000m      # 2 CPU cores
+    memory: 6Gi
   limits:
     nvidia.com/gpu: 1
-    cpu: 2000m      # 2 CPU cores
-    memory: 4Gi
+    cpu: 5000m      # 2 CPU cores
+    memory: 8Gi
 
 # -- Configure startup probe for Jellyfin.
 # This probe gives Jellyfin enough time to start, especially with large media libraries.
