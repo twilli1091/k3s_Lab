@@ -4,7 +4,7 @@ metadata:
   name: cloudflared-deployment
   namespace: music-bot
 spec:
-  replicas: 2
+  replicas: 0
   selector:
     matchLabels:
       pod: cloudflared

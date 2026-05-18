@@ -4,7 +4,7 @@ metadata:
   name: music-bot-deployment
   namespace: music-bot
 spec:
-  replicas: 2
+  replicas: 0
   selector:
     matchLabels:
       app: music-bot
