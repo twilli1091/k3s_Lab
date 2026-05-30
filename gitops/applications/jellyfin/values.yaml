@@ -194,9 +194,11 @@ startupProbe:
 # This probe is disabled during startup (startup probe handles initial checks).
 # Uses httpGet for compatibility with both IPv4 and IPv6.
 livenessProbe:
-  httpGet:
-    path: /health
-    port: http
+  exec:
+    command:
+      - /bin/sh
+      - -c
+      - "curl -fsS http://localhost:8096/health > /dev/null && nvidia-smi > /dev/null"
   initialDelaySeconds: 10
   # successThreshold: 1
   # failureThreshold: 3
