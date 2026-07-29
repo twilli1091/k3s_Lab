@@ -4,7 +4,27 @@
 ![ArgoCD](https://img.shields.io/badge/ArgoCD-ef7b4d.svg?style=for-the-badge&logo=argo&logoColor=white)
 ![Helm](https://img.shields.io/badge/Helm-0F1689.svg?style=for-the-badge&logo=helm&logoColor=white)
 
-This repository contains the declarative configuration for my personal bare-metal Kubernetes cluster. It is built around **GitOps** principles using **ArgoCD**, demonstrating modern platform engineering practices, infrastructure-as-code, and robust lifecycle management of both infrastructure components and user-facing applications.
+This repository contains declarative configuration for a self-hosted bare-metal Kubernetes environment built around **GitOps** principles and **ArgoCD**. It demonstrates modern platform engineering practices, infrastructure as code, and robust lifecycle management for both infrastructure components and user-facing applications.
+
+## Summary
+
+This project showcases a full-stack platform engineering workflow on a bare-metal Kubernetes environment. It combines GitOps automation, declarative infrastructure, secure secret management, networking, storage, observability, and GPU-enabled application delivery in a single, version-controlled system.
+
+### Key Skills Demonstrated
+
+- Kubernetes platform engineering on a bare-metal K3s cluster
+- GitOps and continuous delivery with ArgoCD and Helm
+- Infrastructure as Code for networking, storage, ingress, and observability
+- Secure secret handling with Sealed Secrets
+- GPU workload integration and hardware observability
+- Multi-layer application deployment with self-healing automation
+
+### Project Highlights for Interviews
+
+- Implemented an ArgoCD App of Apps pattern to manage cluster components and workloads from one repository
+- Built a reusable platform layer for ingress, storage, monitoring, and secrets management
+- Deployed real workloads such as Jellyfin and a custom fan-controller with persistent storage and routing
+- Demonstrated operational maturity through automated reconciliation, pruning, and self-healing
 
 ## 🎯 Architecture Overview
 
@@ -56,7 +76,7 @@ The repository is organized to cleanly separate cluster orchestration, platform 
 │   ├── observability/       # Prometheus, DCGM, iDRAC configurations
 │   ├── secrets/             # Sealed Secrets controller
 │   └── storage/             # Longhorn configuration
-└── application/             # End-user workloads
+└── applications/            # End-user workloads
     ├── jellyfin/
     └── fan-controller/
 ```
