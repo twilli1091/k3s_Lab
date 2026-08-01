@@ -223,7 +223,7 @@ volumes:
   - name: transcode-dir
     emptyDir:
       medium: Memory
-      sizeLimit: 4Gi
+      sizeLimit: 10Gi
 
 volumeMounts: 
   - mountPath: /cache/transcodes
