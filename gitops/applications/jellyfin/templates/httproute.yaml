@@ -22,6 +22,10 @@ spec:
     {{- range .Values.httpRoute.rules }}
     - matches:
         {{- toYaml .matches | nindent 8 }}
+      {{- if .timeouts }}
+      timeouts:
+        {{- toYaml .timeouts | nindent 8 }}
+      {{- end }}
       backendRefs:
         # Note: Added a dash in values.yaml to make this a list
         {{- range .backendRefs }}
