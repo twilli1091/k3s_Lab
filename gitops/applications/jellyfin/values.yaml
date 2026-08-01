@@ -144,17 +144,13 @@ ingress:
 httpRoute:
   enabled: true
   annotations: 
-    meta.helm.sh/release-name: envoy-gateway                                                                                                                                                                     │
+    meta.helm.sh/release-name: envoy-gateway
     meta.helm.sh/release-namespace: envoy-gateway-system
   parentRefs: 
     - name: shared-gateway
       namespace: infrastructure
-      group: gateway.networking.k8s.io # Good practice to keep this
+      group: gateway.networking.k8s.io
       kind: Gateway
-    # - name: my-gateway
-    #   namespace: gateway-system
-    #   sectionName: https
-  # -- Hostnames to match for this HTTPRoute
   hostnames:
     - jellyfin.10-0-0-200.nip.io
   rules:
@@ -162,8 +158,11 @@ httpRoute:
         - path:
             type: PathPrefix
             value: /
+      timeouts:
+        request: 0s          # Disables the 15s timeout
+        backendRequest: 0s   # Prevents backend cutoff
       backendRefs:
-        - group: ''	
+        - group: '' 
           kind: Service
           name: jellyfin
           port: 80
