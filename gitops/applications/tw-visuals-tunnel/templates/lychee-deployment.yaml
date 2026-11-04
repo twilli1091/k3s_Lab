@@ -32,6 +32,8 @@ spec:
               value: "127.0.0.1"
             - name: DB_DATABASE
               value: lychee
+            - name: DB_PORT
+              value: "3306"
             - name: DB_USERNAME
               value: lychee
             - name: DB_PASSWORD
