@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tw-visuals-tunnel
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/twilli1091/k3s_Lab.git'
+    targetRevision: HEAD
+    path: gitops/applications/tw-visuals-tunnel
+    helm:
+      parameters:
+      - name: tunnel.token
+        value: "YOUR_CLOUDFLARE_TOKEN" 
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: tw-visuals
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
