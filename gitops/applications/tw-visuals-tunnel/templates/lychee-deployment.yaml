@@ -28,6 +28,8 @@ spec:
                   key: APP_KEY
             - name: DB_CONNECTION
               value: mysql
+            - name: DATABASE_URL
+              value: ""
             - name: DB_HOST
               value: "127.0.0.1"
             - name: DB_DATABASE
