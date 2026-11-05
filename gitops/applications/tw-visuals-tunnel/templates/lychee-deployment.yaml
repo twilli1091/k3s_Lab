@@ -21,11 +21,13 @@ spec:
           ports:
             - containerPort: 8000
           env:
-            - name: APP_KEY
+            - name: APP_KEY_RAW
               valueFrom:
                 secretKeyRef:
                   name: lychee-secrets
                   key: APP_KEY
+            - name: APP_KEY
+              value: 'base64:$(APP_KEY_RAW)'
             - name: DB_CONNECTION
               value: mysql
             - name: DATABASE_URL
