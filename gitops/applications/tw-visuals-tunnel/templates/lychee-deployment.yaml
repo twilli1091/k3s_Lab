@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: lychee
-          image: lycheeorg/lychee:latest
+          image: ghcr.io/lycheeorg/lychee:latest
           ports:
             - containerPort: 8000
           env:
