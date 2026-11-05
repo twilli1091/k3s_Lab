@@ -19,7 +19,7 @@ spec:
         - name: lychee
           image: lycheeorg/lychee:v7.12.1-legacy
           ports:
-            - containerPort: 80
+            - containerPort: 8000
           env:
             - name: APP_KEY
               valueFrom:
@@ -28,8 +28,6 @@ spec:
                   key: APP_KEY
             - name: DB_CONNECTION
               value: mysql
-            - name: RUN_AS_ROOT
-              value: "yes"
             - name: DATABASE_URL
               value: ""
             - name: DB_HOST
