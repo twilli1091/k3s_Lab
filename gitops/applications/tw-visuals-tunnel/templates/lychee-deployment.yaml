@@ -31,7 +31,7 @@ spec:
             - name: DATABASE_URL
               value: ""
             - name: DB_HOST
-              value: "127.0.0.1"
+              value: lychee-db
             - name: DB_DATABASE
               value: lychee
             - name: DB_PORT
@@ -48,32 +48,7 @@ spec:
           volumeMounts:
             - mountPath: /uploads
               name: lychee-uploads
-        - name: mariadb
-          image: mariadb:10.6
-          ports:
-            - containerPort: 3306
-          env:
-            - name: MYSQL_ROOT_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: lychee-secrets
-                  key: MYSQL_ROOT_PASSWORD
-            - name: MYSQL_DATABASE
-              value: lychee
-            - name: MYSQL_USER
-              value: lychee
-            - name: MYSQL_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: lychee-secrets
-                  key: DB_PASSWORD
-          volumeMounts:
-            - mountPath: /var/lib/mysql
-              name: mariadb-data
       volumes:
         - name: lychee-uploads
           persistentVolumeClaim:
             claimName: lychee-uploads-pvc
-        - name: mariadb-data
-          persistentVolumeClaim:
-            claimName: mariadb-data-pvc
