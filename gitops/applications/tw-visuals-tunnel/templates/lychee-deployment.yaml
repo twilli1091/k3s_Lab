@@ -28,6 +28,8 @@ spec:
                   key: APP_KEY
             - name: DB_CONNECTION
               value: mysql
+            - name: RUN_AS_ROOT
+              value: "yes"
             - name: DATABASE_URL
               value: ""
             - name: DB_HOST
