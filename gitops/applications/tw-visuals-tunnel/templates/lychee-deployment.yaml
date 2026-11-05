@@ -17,9 +17,9 @@ spec:
     spec:
       containers:
         - name: lychee
-          image: ghcr.io/lycheeorg/lychee:latest
+          image: lycheeorg/lychee:v7.12.1-legacy
           ports:
-            - containerPort: 8000
+            - containerPort: 80
           env:
             - name: APP_KEY
               valueFrom:
