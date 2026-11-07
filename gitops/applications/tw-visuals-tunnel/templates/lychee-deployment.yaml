@@ -36,6 +36,8 @@ spec:
               value: lychee-db
             - name: DB_DATABASE
               value: lychee
+            - name: APP_URL
+              value: https://twilliamsonvisuals.com
             - name: DB_PORT
               value: "3306"
             - name: DB_USERNAME
