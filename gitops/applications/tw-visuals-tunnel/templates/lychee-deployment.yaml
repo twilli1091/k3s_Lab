@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: lychee
-          image: lycheeorg/lychee:v7.12.1-legacy
+          image: twilli91/lychee:local-20261106193447
           ports:
             - containerPort: 8000
           env:
@@ -46,9 +46,9 @@ spec:
                   name: lychee-secrets
                   key: DB_PASSWORD
             - name: DB_PASSWORD
-              value: '"$(DB_PASSWORD_RAW)"'
+              value: "$(DB_PASSWORD_RAW)"
           volumeMounts:
-            - mountPath: /uploads
+            - mountPath: /app/public/uploads
               name: lychee-uploads
       volumes:
         - name: lychee-uploads
