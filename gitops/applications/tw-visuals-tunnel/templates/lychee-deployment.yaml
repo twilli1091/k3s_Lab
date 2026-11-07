@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   name: lychee-app
   namespace: tw-visuals
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
   labels:
     app: lychee-app
 spec:

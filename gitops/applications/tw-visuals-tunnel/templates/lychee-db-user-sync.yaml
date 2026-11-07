@@ -1,0 +1,50 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: lychee-db-user-sync
+  namespace: tw-visuals
+  annotations:
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation,HookSucceeded
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  backoffLimit: 2
+  activeDeadlineSeconds: 600
+  template:
+    spec:
+      restartPolicy: Never
+      automountServiceAccountToken: false
+      containers:
+        - name: reconcile-db-user
+          image: mariadb:10.6
+          command: ["/bin/sh", "-ec"]
+          args:
+            - |
+              attempt=0
+              until MYSQL_PWD="$MYSQL_ROOT_PASSWORD" mariadb-admin --protocol=tcp --connect-timeout=5 --host=lychee-db --user=root --silent ping; do
+                attempt=$((attempt + 1))
+                if [ "$attempt" -ge 60 ]; then
+                  echo "MariaDB did not become available" >&2
+                  exit 1
+                fi
+                sleep 5
+              done
+
+              escaped_password=$(printf '%s' "$DB_PASSWORD" | sed -e 's/\\/\\\\/g' -e "s/'/''/g")
+
+              MYSQL_PWD="$MYSQL_ROOT_PASSWORD" mariadb --protocol=tcp --host=lychee-db --user=root <<SQL
+              CREATE USER IF NOT EXISTS 'lychee'@'%' IDENTIFIED BY '${escaped_password}';
+              ALTER USER 'lychee'@'%' IDENTIFIED BY '${escaped_password}';
+              GRANT ALL PRIVILEGES ON lychee.* TO 'lychee'@'%';
+              SQL
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: lychee-secrets
+                  key: MYSQL_ROOT_PASSWORD
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: lychee-secrets
+                  key: DB_PASSWORD
