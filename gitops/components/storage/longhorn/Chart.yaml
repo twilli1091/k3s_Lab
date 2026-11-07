@@ -4,5 +4,5 @@ version: 1.0.0
 description: "A wrapper chart for Longhorn on k3s_lab"
 dependencies:
   - name: longhorn
-    version: 1.8.3  # Pin the version here
+    version: 1.8.1 # Pin the version here
     repository: https://charts.longhorn.io
