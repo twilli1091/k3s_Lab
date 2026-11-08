@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ghost-app
+  namespace: tw-visuals
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+  labels:
+    app: ghost-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ghost-app
+  template:
+    metadata:
+      labels:
+        app: ghost-app
+    spec:
+      containers:
+        - name: ghost
+          image: {{ .Values.ghost.image }}
+          ports:
+            - containerPort: 2368
+          env:
+            # Ghost strictly requires this URL to generate internal routing and image links correctly
+            - name: url
+              value: "https://{{ .Values.ghost.domain }}"
+            - name: database__client
+              value: sqlite3
+            - name: database__connection__filename
+              value: content/data/ghost.db
+            - name: database__useNullAsDefault
+              value: "true"
+          volumeMounts:
+            - mountPath: /var/lib/ghost/content
+              name: ghost-content
+      volumes:
+        - name: ghost-content
+          persistentVolumeClaim:
+            claimName: ghost-content-pvc

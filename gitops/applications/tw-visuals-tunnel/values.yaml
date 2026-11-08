@@ -1,2 +1,7 @@
 tunnel:
   token: "" 
+tunnel:
+  token: ""
+ghost:
+  domain: "twilliamsonvisuals.com"
+  image: "ghost:5-alpine"

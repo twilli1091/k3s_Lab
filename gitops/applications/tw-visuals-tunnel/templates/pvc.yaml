@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: lychee-uploads-pvc
+  name: ghost-content-pvc
   namespace: tw-visuals
 spec:
   accessModes:
@@ -9,17 +9,4 @@ spec:
   storageClassName: longhorn
   resources:
     requests:
-      storage: 50Gi
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: mariadb-data-pvc
-  namespace: tw-visuals
-spec:
-  accessModes:
-    - ReadWriteOnce
-  storageClassName: longhorn
-  resources:
-    requests:
-      storage: 5Gi
+      storage: 20Gi
