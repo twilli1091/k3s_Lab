@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: lychee
-          image: twilli91/lychee:local-20261106193447
+          image: twilli91/lychee:local-test
           ports:
             - containerPort: 8000
           env:
