@@ -9,3 +9,16 @@ spec:
       targetPort: 2368
   selector:
     app: ghost-app
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ghost-db
+  namespace: tw-visuals
+spec:
+  clusterIP: None
+  ports:
+    - port: 3306
+      targetPort: 3306
+  selector:
+    app: ghost-db

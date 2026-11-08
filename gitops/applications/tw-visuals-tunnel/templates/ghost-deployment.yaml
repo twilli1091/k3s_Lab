@@ -23,15 +23,21 @@ spec:
           ports:
             - containerPort: 2368
           env:
-            # Ghost strictly requires this URL to generate internal routing and image links correctly
             - name: url
               value: "https://{{ .Values.ghost.domain }}"
             - name: database__client
-              value: sqlite3
-            - name: database__connection__filename
-              value: content/data/ghost.db
-            - name: database__useNullAsDefault
-              value: "true"
+              value: mysql
+            - name: database__connection__host
+              value: ghost-db
+            - name: database__connection__user
+              value: ghost
+            - name: database__connection__password
+              valueFrom:
+                secretKeyRef:
+                  name: ghost-secrets
+                  key: DB_PASSWORD
+            - name: database__connection__database
+              value: ghost
           volumeMounts:
             - mountPath: /var/lib/ghost/content
               name: ghost-content

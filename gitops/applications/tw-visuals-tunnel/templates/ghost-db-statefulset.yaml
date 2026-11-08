@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: ghost-db
+  namespace: tw-visuals
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  serviceName: ghost-db
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ghost-db
+  template:
+    metadata:
+      labels:
+        app: ghost-db
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:8.0
+          args:
+            - "--default-authentication-plugin=mysql_native_password"
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ghost-secrets
+                  key: MYSQL_ROOT_PASSWORD
+            - name: MYSQL_DATABASE
+              value: ghost
+            - name: MYSQL_USER
+              value: ghost
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ghost-secrets
+                  key: DB_PASSWORD
+          volumeMounts:
+            - name: mysql-data
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql-data
+          persistentVolumeClaim:
+            claimName: ghost-db-pvc
