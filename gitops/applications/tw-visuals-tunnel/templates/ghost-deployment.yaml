@@ -38,6 +38,26 @@ spec:
                   key: DB_PASSWORD
             - name: database__connection__database
               value: ghost
+            {{- if .Values.ghost.mail.enabled }}
+            - name: mail__transport
+              value: SMTP
+            - name: mail__options__host
+              value: smtp.gmail.com
+            - name: mail__options__port
+              value: "587"
+            - name: mail__options__auth__user
+              valueFrom:
+                secretKeyRef:
+                  name: ghost-mail-credentials
+                  key: SMTP_USER
+            - name: mail__options__auth__pass
+              valueFrom:
+                secretKeyRef:
+                  name: ghost-mail-credentials
+                  key: SMTP_PASSWORD
+            - name: mail__from
+              value: {{ .Values.ghost.mail.from | quote }}
+            {{- end }}
           volumeMounts:
             - mountPath: /var/lib/ghost/content
               name: ghost-content
