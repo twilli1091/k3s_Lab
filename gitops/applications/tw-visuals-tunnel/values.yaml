@@ -6,5 +6,5 @@ ghost:
   domain: "twilliamsonvisuals.com"
   image: "ghost:6-alpine"
   mail:
-    enabled: false
-    from: ""
+    enabled: true
+    from: "contact@twilliamsonvisuals.com"
